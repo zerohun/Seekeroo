@@ -42,5 +42,4 @@ group :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-
 end
