@@ -17,4 +17,9 @@ class ImagesController < ApplicationController
     redirect_to @image
 
   end
+  def destroy
+    image = Image.find(params[:id])
+    File.delete(image.image.path)
+    image.delete
+  end
 end
