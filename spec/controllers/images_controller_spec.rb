@@ -8,7 +8,19 @@ describe ImagesController do
   
 
   context "no user" do
+      it "upload image file" do
+        filepath = image.image.path
+        File.read(filepath).should eql(File.read(path))
+      end
+
+      it "can access image file in this article" do
+        get 'show', :id => image.id
+        filepath = image.image.path
+        File.read(filepath).should eql(File.read(path))
+      end
+
       it "delete images record with real image file" do
+
         filepath = image.image.path
         image.destroy
         begin
