@@ -12,3 +12,11 @@ Feature: Creating articles
     Then I should see "Article was successfully created"
     And I should be on the first article page
 
+  @javascript
+  Scenario: Creating a article with attaching image file
+    And I attach the file "spec/fixtures/sarah.jpg" to "Image file"
+    And I should see "sarah.jpg" within "#article .preview"
+    And I press "Create Article"
+    Then I should see "Article was successfully created"
+    And I should be on the first article page
+
