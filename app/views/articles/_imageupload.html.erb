@@ -1,4 +1,9 @@
-<script type="text/javascript">
-</script>
+
+<%= javascript_include_tag "imagepreview" %>
+<label for="image_image">Image file</label> 
+ <input id="image_image" name="image[image]" type="file" />
+<div class="preview">
+</div> 
+
 <iframe src="<%= new_image_path %>">
 </iframe>
