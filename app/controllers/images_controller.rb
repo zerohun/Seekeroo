@@ -13,8 +13,9 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.create(params[:image])
-    @image.save!
-    redirect_to @image
+    @image.save
+    render :action => "preview"
+
 
   end
   def destroy
@@ -22,4 +23,9 @@ class ImagesController < ApplicationController
     File.delete(image.image.path)
     image.delete
   end
+
+  def preview
+
+  end
+
 end
