@@ -12,20 +12,27 @@ class ImagesController < ApplicationController
   end
 
   def create
+    @images = Image.where(["state = ?", "temp"])
+    if @images != nil
+      @images.each do |image|
+        image.destroy;
+      end
+    end
     @image = Image.create(params[:image])
+    @image.state = "temp"
     @image.save
-    render :action => "preview"
-
-
-  end
-  def destroy
-    image = Image.find(params[:id])
-    File.delete(image.image.path)
-    image.delete
+    render :partial => "preview"
   end
 
   def preview
 
   end
 
+
+  def destroy
+    image = Image.find(params[:id])
+
+    File.delete(image.image.path)
+    image.delete
+  end
 end

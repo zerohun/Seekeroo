@@ -1,1 +1,10 @@
 <%= render 'form' %>
+<% if @image.id != nil %>
+  <script type="text/javascript">
+    window.parent.respond_from_server("<%= image_path(@image) %>");
+
+  </script>
+
+<% end %>
+
+

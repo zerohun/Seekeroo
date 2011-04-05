@@ -1,12 +1,13 @@
 <%= javascript_include_tag "iframeupload" %>
 <%= javascript_tag do -%>
    $(document).ready(function() {
-     crateResponder("preview");
+     crateResponder("previewimg");
      createUploadIframe( "../images/new" , "image_image", "new_image", "fileupload");
      });
 <% end -%>
 <label>Image file</label>
 
 <button type="button" id="fileupload">Upload File</button>
-<div id="preview">
+<div id="previewdiv">
+  <img id="previewimg"></img>
 </div>

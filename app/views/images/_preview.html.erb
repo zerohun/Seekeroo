@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  window.parent.respond_from_server("<%= image_path(@image) %>");
+</script>
+
+<%= form_for Image.new, :html => { :multipart => true }  do |f| %> 
+  <div class="fields">
+    <%= f.label :image, "File" %>   
+    <%= f.file_field :image %> 
+  </div>
+  <div class="actions">
+    <%= f.submit%>
+  </div>
+<% end %>
+

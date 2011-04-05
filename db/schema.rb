@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401131812) do
+ActiveRecord::Schema.define(:version => 20110405133135) do
 
   create_table "articles", :force => true do |t|
     t.datetime "created_at"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110401131812) do
     t.datetime "image_update_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
 end

@@ -4,7 +4,7 @@ function crateResponder(target_id)
 {
   
   respond_from_server = new Function("image_src", 
-    "$('#preview').append('<img src=' + image_src + ' />')");
+    "$('#" + target_id + "').attr('src',image_src);");
 
 }
 function createUploadIframe(iframe_src, fileinput_id, form_id, triggerbutton_id)
