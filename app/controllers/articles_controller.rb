@@ -44,6 +44,9 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        image = Image.find_by_id(@article.image_id)
+        image.state = "uploaded"
+        image.save
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
       else

@@ -7,11 +7,6 @@ Feature: Creating articles
     Given I am on the homepage
     When I follow "New Article"
 
-  Scenario: Creating a article
-    And I press "Create Article"
-    Then I should see "Article was successfully created"
-    And I should be on the first article page
-
   @javascript
   Scenario: Creating a article with attaching image file
     And I attach the file "spec/fixtures/sarah.jpg" to "Image file"

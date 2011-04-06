@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  window.parent.respond_from_server("<%= image_path(@image) %>");
+  window.parent.respond_from_server("<%= image_path(@image) %>", "<%= @image.id %>");
 </script>
 
 <%= form_for Image.new, :html => { :multipart => true }  do |f| %> 
