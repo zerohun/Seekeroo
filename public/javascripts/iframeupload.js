@@ -1,5 +1,3 @@
-alert('hha');
-
 function crateResponder(target_id)
 {
   
@@ -15,13 +13,16 @@ function createUploadIframe(iframe_src, fileinput_id, form_id, triggerbutton_id)
     id: iframe_id,
     src: iframe_src
   }).appendTo("body");
+
+ $('#' + iframe_id).load(function(){
+    $('#' + iframe_id).contents().find('#image_image').change(function(){
+      $('#' + iframe_id).contents().find('#image_submit').trigger('click');
+    });
+ });
   
   $('#' + triggerbutton_id).click(function(event){
 
-    $('#' + iframe_id).contents().find('#image_image').change(function(){
-   //   $('#' + form_id).submit();
-      $('#' + iframe_id).contents().find('#image_submit').trigger('click');
-    });
+
     $('#' + iframe_id).contents().find('#' + fileinput_id).trigger('click');
 
     event.preventDefault();

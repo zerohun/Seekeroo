@@ -9,9 +9,9 @@ Feature: Creating articles
 
   @javascript
   Scenario: Creating a article with attaching image file
-    And I attach the file "spec/fixtures/sarah.jpg" to "Image file"
-    And I should see "sarah.jpg" within "#article .preview"
+    And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "uploadFrame"
+    And I should see "img"
     And I press "Create Article"
-    Then I should see "Article was successfully created"
-    And I should be on the first article page
+    Then show me the page
+    Then I should see "Article was successfully created."
 
