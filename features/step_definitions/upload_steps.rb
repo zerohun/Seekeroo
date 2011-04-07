@@ -4,3 +4,11 @@ When /^I attach the file "([^"]*)" to "([^"]*)" in frame "([^"]*)"$/ do |path, f
   end
 end
 
+Then /^(?:|I )should see image file/ do 
+  if page.respond_to? :should
+    targetxpath = "//img/attribute::src"
+    page.should have_xpath(targetxpath)
+  else
+    assert page.has_xpath?(targetxpath)
+  end
+end
