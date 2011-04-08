@@ -43,7 +43,6 @@ describe ArticlesController do
   end
 
 =begin
-
   describe "POST create" do
     describe "with valid params" do
 
