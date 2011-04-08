@@ -1,4 +1,4 @@
-function crateResponder(target_id)
+function createResponder(target_id)
 {
   
   respond_from_server = new Function("image_src", "image_id",

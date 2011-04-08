@@ -1,0 +1,5 @@
+embed_assets: on
+
+javascripts:
+  image_preview:
+    - public/javascripts/iframeupload.js

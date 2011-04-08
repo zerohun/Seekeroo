@@ -1,7 +1,7 @@
-<%= javascript_include_tag "iframeupload" %>
+<%= include_javascripts :image_preview %>
 <%= javascript_tag do -%>
    $(document).ready(function() {
-     crateResponder("previewimg");
+     createResponder("previewimg");
      createUploadIframe( "../images/new" , "image_image", "new_image", "fileupload");
      });
 <% end -%>

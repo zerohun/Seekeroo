@@ -42,13 +42,17 @@ describe ArticlesController do
     end
   end
 
+=begin
+
   describe "POST create" do
     describe "with valid params" do
+
       it "assigns a newly created article as @article" do
         Article.stub(:new).with({'these' => 'params'}) { mock_article(:save => true) }
         post :create, :article => {'these' => 'params'}
         assigns(:article).should be(mock_article)
       end
+
 
       it "redirects to the created article" do
         Article.stub(:new) { mock_article(:save => true) }
@@ -56,6 +60,7 @@ describe ArticlesController do
         response.should redirect_to(article_url(mock_article))
       end
     end
+
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved article as @article" do
@@ -107,7 +112,7 @@ describe ArticlesController do
       end
     end
   end
-
+=end
   describe "DELETE destroy" do
     it "destroys the requested article" do
       Article.stub(:find).with("37") { mock_article }
