@@ -2,4 +2,5 @@ embed_assets: on
 
 javascripts:
   image_preview:
+    - public/javascripts/rubyizing.js
     - public/javascripts/iframeupload.js

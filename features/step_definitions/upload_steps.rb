@@ -4,11 +4,14 @@ When /^I attach the file "([^"]*)" to "([^"]*)" in frame "([^"]*)"$/ do |path, f
   end
 end
 
-Then /^(?:|I )should see image file/ do 
+
+Then /^I should see the image file in div id "([^"]*)"$/ do |divid|
+
   if page.respond_to? :should
-    targetxpath = "//img/attribute::src"
+    targetxpath = "//div[@id='#{divid}']/img/attribute::src"
     page.should have_xpath(targetxpath)
   else
     assert page.has_xpath?(targetxpath)
   end
+
 end

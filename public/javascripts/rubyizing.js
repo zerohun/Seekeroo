@@ -4,7 +4,7 @@ function takeOff(tstring)
   return result;
 }
 
-function dynamicString(tstring)
+function ds(tstring)
 {
 
   var pattern = /#\{[^#\{\}]+\}/g;
@@ -13,7 +13,6 @@ function dynamicString(tstring)
   for (var i in matchs)
   {
       var value = takeOff(String(matchs[i]));
-      alert(value);
       var generated = generated.replace(matchs[i], eval(value));
   } 
   return generated;

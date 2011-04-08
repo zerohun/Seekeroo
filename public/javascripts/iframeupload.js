@@ -1,8 +1,16 @@
+
+// This for uploading image file throught iframe
+// it generate iframe and trigger file upload
+//  - dependency : rubyizing.js
+
+
+
+
 function createResponder(target_id)
 {
   
   respond_from_server = new Function("image_src", "image_id",
-    "$('#" + target_id + "').attr('src',image_src);\n$('#article_image_id').val(image_id);");
+    "$('##{" + target_id + "}').attr('src',image_src);\n$('#article_image_id').val(image_id);");
 
 }
 function createUploadIframe(iframe_src, fileinput_id, form_id, triggerbutton_id)
