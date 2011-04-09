@@ -10,6 +10,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem 'paperclip'
 gem 'jammit'
+gem 'haml-rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

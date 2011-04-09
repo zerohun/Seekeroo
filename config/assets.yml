@@ -2,5 +2,8 @@ embed_assets: on
 
 javascripts:
   image_preview:
-    - public/javascripts/rubyizing.js
+
+    - app/views/articles/upload_iframe.jst
     - public/javascripts/iframeupload.js
+    - public/javascripts/util.js
+

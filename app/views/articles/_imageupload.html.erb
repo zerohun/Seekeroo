@@ -2,7 +2,8 @@
 <%= javascript_tag do -%>
    $(document).ready(function() {
      createResponder("previewimg");
-     createUploadIframe( "../images/new" , "image_image", "new_image", "fileupload");
+     createUploadIframe("upload_iframe", "upload_iframe", "../images/new" , "image_image", "new_image", "fileupload");
+ iframe_id = 'uploadFrame';
      });
 <% end -%>
 <label>Image file</label>
