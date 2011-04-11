@@ -1,15 +1,13 @@
 module ApplicationHelper
-  def image_preview(object_id, object_name, frame_src)
 
-    content_tag(:div, :class => "image_preview",
-                :id => "object_id", :name => "object_name") do
-
-      htmltext = ""
-      htmltext += javascript_include_tag 'iframeupload'
-
-    end
-
-
+  def on_document_ready(scriptstring)
+    generated_html = ""
+    generated_html += "\n<script type='text/javascript'>"
+    generated_html += "\n$(document).ready(function() {"
+    generated_html += "\n#{scriptstring}"
+    generated_html += "\n});"
+    generated_html += "\n</script>"
+    generated_html
   end
 
 end
