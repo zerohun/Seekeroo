@@ -1,9 +1,12 @@
 embed_assets: on
 
 javascripts:
-  image_preview:
 
+  image_upload:
+    - public/javascripts/iframe_upload.js
     - app/views/articles/upload_iframe.jst
-    - public/javascripts/iframeupload.js
+
+  image_preview:
+    - public/javascripts/image_preview.js
     - public/javascripts/util.js
 

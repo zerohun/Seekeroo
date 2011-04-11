@@ -1,0 +1,6 @@
+= form_for Image.new, :html => { :multipart => true }  do |f|
+  .fields
+    = f.label :image, "File"
+    = f.file_field :image
+  .actions
+    = f.submit

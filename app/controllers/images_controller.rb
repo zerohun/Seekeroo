@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
     @image = Image.create(params[:image])
     @image.state = "temp"
     @image.save
-    render :partial => "preview"
+    render :action => :new
   end
 
   def preview
