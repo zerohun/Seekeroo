@@ -1,6 +1,11 @@
 Fingeroo::Application.routes.draw do
   resources :articles 
-  resources :images
+  resources :images do
+    member do
+      get 'size_for_pc'
+      get 'size_for_thumb'
+    end
+  end
 
 
   # The priority is based upon order of creation:

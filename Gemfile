@@ -7,7 +7,7 @@ gem 'rails', '3.0.5'
 
 gem 'sqlite3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-
+gem 'rmagick'
 gem 'paperclip'
 gem 'jammit'
 gem 'haml-rails'
