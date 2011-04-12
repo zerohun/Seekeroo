@@ -14,8 +14,6 @@ class ImagesController < ApplicationController
         :content_type => @image.image_content_type
   end
 
-
-
   def create
     @images = Image.where(["state = ?", "temp"])
     if @images != nil
@@ -23,9 +21,11 @@ class ImagesController < ApplicationController
         image.destroy;
       end
     end
-    @image = Image.create(params[:image])
-    @image.state = "temp"
-    @image.save
+    if params[:image] != nil
+      @image = Image.create(params[:image])
+      @image.state = "temp"
+      @image.save
+    end
     render :action => :new
   end
 

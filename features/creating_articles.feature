@@ -8,7 +8,7 @@ Feature: Creating articles
     When I follow "New Article"
 
   @javascript
-  Scenario: Creating a article with attaching image file
+  Scenario: Creating a article with attaching image file and some text
     And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
     Then I should see the image file in div id "previewdiv" 
     And I press "Create Article"
