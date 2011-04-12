@@ -7,10 +7,27 @@ Feature: Creating articles
     Given I am on the homepage
     When I follow "New Article"
 
+
   @javascript
-  Scenario: Creating a article with attaching image file and some text
+
+  Scenario: Creating a article with attaching image file
     And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
     Then I should see the image file in div id "previewdiv" 
     And I press "Create Article"
     Then I should see "Article was successfully created."
+
+  @javascript
+  Scenario: Creating a article with attaching image file and some text 
+    And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
+    And I fill in "Subtitle" with "She is my beautiful girl friend Sarah"
+    Then I should see the image file in div id "previewdiv" 
+    And I press "Create Article"
+    Then I should see "Article was successfully created."
+    Then I should see "She is my beautiful girl friend Sarah"
+
+  Scenario: Creating a article without attaching image file
+    And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
+    Then I should see the image file in div id "previewdiv" 
+    And I press "Create Article"
+    #Then I should see "Article was successfully created."
 
