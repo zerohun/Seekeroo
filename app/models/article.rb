@@ -1,6 +1,10 @@
 class Article < ActiveRecord::Base
 
-  validates :image_id, :presence => true
+  validate do |article|
+    if article.image_id.blank?
+      article.errors.add(:base, "You should upload at least one image file") 
+    end
+  end
 
   belongs_to :image
   has_many :subtitles

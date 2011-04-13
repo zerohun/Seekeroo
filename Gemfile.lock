@@ -47,6 +47,8 @@ GEM
     childprocess (0.1.8)
       ffi (~> 1.0.6)
     closure-compiler (1.1.1)
+    commonwatir (1.8.1)
+      user-choices
     configuration (1.2.0)
     cucumber (0.10.2)
       builder (>= 2.1.2)
@@ -71,6 +73,8 @@ GEM
       railties (>= 3.0.0)
     ffi (1.0.7)
       rake (>= 0.8.7)
+    firewatir (1.8.1)
+      commonwatir (= 1.8.1)
     gherkin (2.3.5)
       json (>= 1.4.6)
     haml (3.0.25)
@@ -79,6 +83,8 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    hoe (2.9.4)
+      rake (>= 0.8.7)
     i18n (0.5.0)
     jammit (0.6.0)
       closure-compiler (>= 0.1.0)
@@ -134,6 +140,8 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.5.0)
     rubyzip (0.9.4)
+    s4t-utils (1.0.4)
+      hoe (>= 1.3.0)
     selenium-webdriver (0.1.4)
       childprocess (>= 0.1.7)
       ffi (>= 1.0.7)
@@ -147,6 +155,11 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.25)
+    user-choices (1.1.6.1)
+      builder (>= 2.1.2)
+      s4t-utils (>= 1.0.3)
+      xml-simple (>= 1.0.11)
+    xml-simple (1.0.15)
     xpath (0.1.3)
       nokogiri (~> 1.3)
     yui-compressor (0.9.6)
@@ -161,6 +174,7 @@ DEPENDENCIES
   database_cleaner
   email_spec
   factory_girl_rails
+  firewatir
   haml-rails
   jammit
   launchy
