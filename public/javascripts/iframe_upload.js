@@ -5,10 +5,10 @@ function createUploadIframe(iframe_id, iframe_name, iframe_src, fileinput_id, fo
 {
 
  iframeHTML=JST.upload_iframe({name: iframe_name, id: iframe_id, src: iframe_src});
- $("body").append(iframeHTML);
+ jQuery("body").append(iframeHTML);
 
- iframe = $('#' + iframe_id);
- triggerbutton = $('#' + triggerbutton_id);
+ iframe = jQuery('#' + iframe_id);
+ triggerbutton = jQuery('#' + triggerbutton_id);
 
  iframe.load(function(){
       iframe.contents().find('#image_image').change(function(){

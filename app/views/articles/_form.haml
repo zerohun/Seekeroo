@@ -8,6 +8,7 @@
         - @article.errors.full_messages.each do |msg|
           %li= msg
   = iframe_for_upload(new_image_path, "image_image", "new_image")
-  = image_preview(:article, :image)
+  = image_preview(@article, :image)
+  = render "subtitles/form"
   .actions
     = f.submit

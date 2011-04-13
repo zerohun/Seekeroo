@@ -1,16 +1,8 @@
-= form_for @subtitle do |f|
-  -if @subtitle.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@subtitle.errors.count, "error")} prohibited this subtitle from being saved:"
-      %ul
-        - @subtitle.errors.full_messages.each do |msg|
-          %li= msg
+= fields_for @article do |f|
 
   .field
-    = f.label :text
-    = f.text_field :text
-  .field
-    = f.label :article_id
-    = f.text_field :article_id
-  .actions
-    = f.submit 'Save'
+  = f.fields_for :subtitles do |subtitle|
+    %p
+      = subtitle.label :text
+      = subtitle.text_field :text
+

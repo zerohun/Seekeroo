@@ -1,6 +1,10 @@
 class Article < ActiveRecord::Base
-  belongs_to :image
 
+  validates :image_id, :presence => true
+
+  belongs_to :image
   has_many :subtitles
+
+  accepts_nested_attributes_for :subtitles
 
 end

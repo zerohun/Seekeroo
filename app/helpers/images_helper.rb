@@ -3,8 +3,7 @@ module ImagesHelper
     
     generated_html = ""
     if image_model_obj != nil && image_model_obj.id != nil
-      image_model_name = image_model_obj.class.to_s.downcase
-      image_url_method = method(:"#{image_size}_#{image_model_name}_path");
+      image_url_method = method(:"#{image_size}_#{model_name_of(image_model_obj)}_path");
       new_image_path = image_url_method.call(image_model_obj);
       generated_html += "<script type='text/javascript'>"
       generated_html += "\n   window.parent.respond_from_server('#{new_image_path}',"

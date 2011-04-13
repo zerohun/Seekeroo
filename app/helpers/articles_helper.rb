@@ -12,8 +12,8 @@ module ArticlesHelper
     generated_html.html_safe
   end
 
-  def image_preview(target, image)
-    previewimgid = "#{target.to_s}_#{image.to_s}_id"
+  def image_preview(target, image_model_name)
+    previewimgid = "#{model_name_of(target)}_#{image_model_name.to_s}_id"
     generated_html =""
     generated_html += include_javascripts :image_preview
     onload_code = on_document_ready(
@@ -21,9 +21,13 @@ module ArticlesHelper
     );
     generated_html += onload_code
     generated_html += "\n<div id='previewdiv'>"
-    generated_html += "\n  <img id='previewimg'></img>"
+    if target.image_id != nil
+      generated_html += "\n  <img id='previewimg' src='#{size_for_pc_image_path(target.image_id)}'></img>"
+    else
+      generated_html += "\n  <img id='previewimg'></img>"
+    end
     generated_html += "\n</div>"
-    generated_html += hidden_field(target, :"#{image}_id") 
+    generated_html += hidden_field(model_name_of(target), :"#{image_model_name}_id") 
     generated_html.html_safe
   end
 end
