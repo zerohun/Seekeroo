@@ -20,7 +20,7 @@ gem 'haml-rails'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Bundle the extra gems:
 # gem 'bj'
@@ -35,11 +35,11 @@ gem 'haml-rails'
 #   gem 'webrat'
 # end
 group :test, :development do
-  gem 'rspec-rails', '~> 2.3'
+  gem 'rspec-rails', '~> 2.4'
 end
 
 group :test do
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
   gem 'capybara'
   gem 'email_spec'
   gem 'launchy'

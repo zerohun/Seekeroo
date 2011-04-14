@@ -5,11 +5,13 @@ Feature: Editing articles
 
   Background:
     Given there are the following articles:
-      |id |           file          |     subtitle      |
-      | 1 | spec/fixtures/sarah.jpg | my beautiful girl |
+      | id |           file          |     subtitle      |
+      | 1  | spec/fixtures/sarah.jpg | my beautiful girl |
+
     Given I am on the homepage
-    When I tap image id 1
 
   Scenario:
 
-
+    Then show me the page
+    When I click "img"
+    Then I should on the article page for id 1

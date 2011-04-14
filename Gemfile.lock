@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/aslakhellesoy/cucumber-rails.git
+  revision: d0b9c0b261492f8930ee5b33d38247d3e8c1b254
+  specs:
+    cucumber-rails (0.4.1)
+      cucumber (>= 0.10.1)
+      nokogiri (>= 1.4.4)
+      rack-test (>= 0.5.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -32,6 +41,7 @@ GEM
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
     activesupport (3.0.5)
+    archive-tar-minitar (0.5.2)
     arel (2.0.9)
     builder (2.1.2)
     capybara (0.4.1.2)
@@ -47,6 +57,7 @@ GEM
     childprocess (0.1.8)
       ffi (~> 1.0.6)
     closure-compiler (1.1.1)
+    columnize (0.3.2)
     configuration (1.2.0)
     cucumber (0.10.2)
       builder (>= 2.1.2)
@@ -54,10 +65,6 @@ GEM
       gherkin (>= 2.3.5)
       json (>= 1.4.6)
       term-ansicolor (>= 1.0.5)
-    cucumber-rails (0.4.0)
-      cucumber (>= 0.10.1)
-      nokogiri (>= 1.4.4)
-      rack-test (>= 0.5.7)
     culerity (0.2.15)
     database_cleaner (0.6.6)
     diff-lcs (1.1.2)
@@ -88,6 +95,8 @@ GEM
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
+    linecache19 (0.5.12)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -133,6 +142,16 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    ruby-debug-base19 (0.11.25)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
+    ruby_core_source (0.1.5)
+      archive-tar-minitar (>= 0.5.2)
     rubyzip (0.9.4)
     selenium-webdriver (0.1.4)
       childprocess (>= 0.1.7)
@@ -157,7 +176,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  cucumber-rails
+  cucumber-rails!
   database_cleaner
   email_spec
   factory_girl_rails
@@ -167,6 +186,7 @@ DEPENDENCIES
   paperclip
   rails (= 3.0.5)
   rmagick
-  rspec-rails (~> 2.3)
+  rspec-rails (~> 2.4)
+  ruby-debug19
   sqlite3
   sqlite3-ruby
