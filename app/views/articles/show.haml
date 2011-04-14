@@ -1,5 +1,6 @@
 %p#notice= notice
-= tag("img", { :src => size_for_pc_image_path(@article.image) })
+#image_view
+  = tag("img", {:src => size_for_pc_image_path(@article.image) })
 
 .subtitle
   = @article.subtitles.first.text

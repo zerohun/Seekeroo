@@ -19,7 +19,6 @@
 #
 
 require 'cucumber/rails'
-require 'watir'
 
 
 # Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
@@ -30,7 +29,6 @@ Capybara.default_selector = :css
 Capybara.default_wait_time = 10
 
 
-Watir::Browser.default = 'firefox'
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how 
@@ -51,5 +49,5 @@ ActionController::Base.allow_rescue = false
 
 # Remove this line if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
-DatabaseCleaner.strategy = :transaction
+DatabaseCleaner.strategy = :truncation
 

@@ -10,13 +10,12 @@ Feature: Creating articles
   @javascript
   Scenario: Creating a article with attaching image file writing and subtitle
     And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
-    Then I should see the image file in div id "previewdiv" 
-    And I press "Create Article"
-    Then I should see "Article was successfully created."
-    Then I should see the image file in div id "previewdiv" 
+    Then I should see the image file "sarah.jpg" in "div#previewdiv" 
+    And  I fill in "Subtitle" with "She is my beautiful girl friend Sarah"
     And I press "Create Article"
     Then I should see "Article was successfully created."
     Then I should see "She is my beautiful girl friend Sarah"
+    Then I should see the image file "sarah.jpg" in "div#image_view"
 
   Scenario: Creating a article without attaching image file
     And I press "Create Article"
