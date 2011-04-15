@@ -2,8 +2,10 @@
 %table
   %tr
     %th
-  - @articles.each do |article|
-    %tr
-      %td= link_to tag("img", {:id => article.id, :src => size_for_thumb_image_path(article.image)}), article
+      - index = 0
+      - @articles.each do |article|
+        - index = index + 1
+        %tr
+          %td= link_to tag("img", {:src => size_for_thumb_image_path(article.image)}), article, :id => index
 %br/
 = link_to 'New Article', new_article_path

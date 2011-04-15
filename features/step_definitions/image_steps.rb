@@ -7,8 +7,8 @@ When /^I attach the file "([^"]*)" to "([^"]*)" in frame "([^"]*)"$/ do |path, f
 end
 
 
-Then /^I should see the image file "([^"]*)" in "([^"]*)"$/ do |imagefile, div|
 
+Then /^I should see the image file "([^"]*)" in "([^"]*)"$/ do |imagefile, div|
   if page.respond_to? :should
     page.should have_css(div + " > img[src]")
     image =  page.find(div).find("img")
@@ -19,5 +19,14 @@ Then /^I should see the image file "([^"]*)" in "([^"]*)"$/ do |imagefile, div|
   else
     assert page.has_css?(div + " > img[src]")
   end
+end
+Then /^I should see the changed image file "([^"]*)" in "([^"]*)"$/ do |imagefile, div|
 
+    sleep(10)
+    page.should have_css(div + " > img[src]")
+    image =  page.find(div).find("img")
+    image_id = getImageID(page.find(div).find("img")[:src])
+    image = Image.find_by_id!(image_id)
+    fname = image.image_file_name
+    assert fname == imagefile
 end

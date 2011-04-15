@@ -1,17 +1,18 @@
-Feature: Editing articles
+Feature: Viewing articles
   In order to view article
   As a user
   I want to view them
 
   Background:
     Given there are the following articles:
-      | id |           file          |     subtitle      |
-      | 1  | spec/fixtures/sarah.jpg | my beautiful girl |
+      |           file          |     subtitle      |
+      | spec/fixtures/sarah.jpg | my beautiful girl |
 
     Given I am on the homepage
 
   Scenario:
 
-    Then show me the page
-    When I click "img"
-    Then I should on the article page for id 1
+    When I click "a#1"
+    Then I should be on the article page
+    Then I should see "my beautiful girl"
+    Then I should see the image file "sarah.jpg" in "div#image_view"

@@ -14,6 +14,7 @@ Feature: Creating articles
     And  I fill in "Subtitle" with "She is my beautiful girl friend Sarah"
     And I press "Create Article"
     Then I should see "Article was successfully created."
+    Then I should be on the article page
     Then I should see "She is my beautiful girl friend Sarah"
     Then I should see the image file "sarah.jpg" in "div#image_view"
 

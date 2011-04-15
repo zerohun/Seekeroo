@@ -6,14 +6,10 @@ Given /^there are the following articles:$/ do |table|
     image = Image.create!(:image => File.new(attributes[:file]))
     subtitle = Subtitle.create!(:text => attributes[:subtitle])
 
-    @article = Article.create!(
-      :id => attributes[:id],
+    @article = Article.create(
       :image_id => image.id
     )
-    @article.id = attributes[:id]
     @article.subtitles << subtitle
-    @article.save
-
-
+    @article.save!
   end
 end

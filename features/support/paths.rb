@@ -12,9 +12,8 @@ module NavigationHelpers
       '/'
     when /the first article page/
       article_path(Article.first)
-
-    when /the article page for id (\d+)$/ |page_id|
-      article_path($1)
+    when /the article page/
+      article_path(Article.first)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
