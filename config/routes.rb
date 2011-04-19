@@ -5,6 +5,8 @@ Fingeroo::Application.routes.draw do
     resources :subtitles
   end
 
+  resources :subtitles
+
   resources :images do
     member do
       get 'size_for_pc'

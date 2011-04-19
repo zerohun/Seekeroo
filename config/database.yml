@@ -7,7 +7,7 @@ defaults: &defaults
 #mysql
 development:
   <<: *defaults
-  database: development
+  database: fingeroo_development
   pool: 5
   timeout: 20000
 
@@ -16,13 +16,13 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *defaults
-  database: test
+  database: fingeroo_test
   pool: 5
   timeout: 20000
 
 production:
   <<: *defaults
-  database: production
+  database: fingeroo_production
   pool: 5
   timeout: 20000
 

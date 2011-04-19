@@ -1,8 +1,7 @@
-= fields_for @article do |f|
+=fields_for @article do |f|
 
   .field
-  = f.fields_for :subtitles do |subtitle|
+  = f.fields_for :subtitles, :child_index => number do |subtitle|
     %p
-      = subtitle.label :text, "Subtitle"
+      = subtitle.label :text, "Subtitle ##{number += 1}"
       = subtitle.text_field :text
-

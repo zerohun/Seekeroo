@@ -24,10 +24,11 @@ class SubtitlesController < ApplicationController
   # GET /subtitles/new
   # GET /subtitles/new.xml
   def new
-    @subtitle = Subtitle.new
-
+    @article = Article.new
+    @subtitle = @article.subtitles.build
     respond_to do |format|
       format.html # new.html.erb
+      format.js {render :layout =>false, :content_type => 'text/javascript' }
       format.xml  { render :xml => @subtitle }
     end
   end

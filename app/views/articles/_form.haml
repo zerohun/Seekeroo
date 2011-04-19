@@ -9,13 +9,16 @@
           %li= msg
   = iframe_for_upload(new_image_path, "image_image", "new_image")
   = image_preview(@article, :image)
+  - number = 0
   #subtitles
-  = link_to_remote "Add Subtitle",
-        :url => new_article_subtitle_path,
-        :update => "Subtitle",
-        :position => "bottom",
-        :method => :get,
-        :with => "'number=' + $$('div#subtitles input').length"
-  = render "subtitles/form"
+    =render :partial => "subtitles/form",
+      :locals => { :number => number}
+
+
+  =link_to "Add Subtitle", 
+        new_subtitle_path, 
+        :remote => true,
+        :method => :get
+
   .actions
     = f.submit
