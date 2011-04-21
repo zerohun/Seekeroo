@@ -1,2 +1,3 @@
-var number = $$('div#subtitles div.field').length
-alert(number);
+var number = $('div#subtitles div.field').length;
+subtitleHTML = JST.subtitle_form({number: number});
+$('div#subtitles').append(subtitleHTML);

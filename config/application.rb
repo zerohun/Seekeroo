@@ -42,5 +42,7 @@ module Fingeroo
     config.generators do |g|
       g.test_framework :rspec
     end
+
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
   end
 end

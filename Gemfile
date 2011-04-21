@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.7'
 
 # Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -14,6 +14,8 @@ gem 'rmagick'
 gem 'paperclip'
 gem 'jammit'
 gem 'haml-rails'
+gem 'barista'
+gem 'jquery-rails', '>= 0.2.6'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -42,7 +44,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'cucumber-rails', :git => 'git://github.com/aslakhellesoy/cucumber-rails.git'
+  gem 'cucumber-rails'
   gem 'capybara'
   gem 'email_spec'
   gem 'launchy'
