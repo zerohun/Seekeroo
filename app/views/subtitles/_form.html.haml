@@ -3,8 +3,7 @@
 
   .field
   = f.fields_for :subtitles do |subtitle|
-    %p
-      = subtitle.label :text, "Subtitle"
-      = subtitle.text_area(:text, :rows => 3)
-      = link_to "remove", "/", html_option = {:class => "remove_subtitle_field"}
+    = subtitle.label :text, "Subtitle"
+    = subtitle.text_area(:text, :rows => 3)
+    = link_to "remove", "/", html_option = {:class => "remove_subtitle_field"}
 

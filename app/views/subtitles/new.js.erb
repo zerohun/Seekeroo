@@ -1,3 +1,8 @@
 var number = $('div#subtitles div.field').length;
 subtitleHTML = JST.subtitle_form({number: number});
 $('div#subtitles').append(subtitleHTML);
+$('a#remove_field_id_' + number).click(function(event){
+  $(this).parent().remove();
+  event.preventDefault();
+});
+

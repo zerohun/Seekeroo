@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Thu, 21 Apr 2011 12:02:24 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/remove_subtitle_fields.coffee
+/* DO NOT MODIFY. This file was compiled Thu, 21 Apr 2011 12:23:37 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/remove_subtitle_field.coffee
  */
 
 (function() {

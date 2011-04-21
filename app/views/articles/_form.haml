@@ -1,4 +1,4 @@
-= include_javascripts :ajax_subtitle
+= include_javascripts :subtitle_field
 = form_for(@article) do |f|
   - if @article.errors.any?
     #error_explanation
@@ -12,14 +12,12 @@
   = image_preview(@article, :image)
   - number = 0
   #subtitles
-    =render :partial => "subtitles/form",
-            :locals => { :number => number}
+    -#=render :partial => "subtitles/form",
+      -#:locals => { :number => number}
 
 
-  =link_to "Add Subtitle", 
-        new_subtitle_path, 
-        :remote => true,
-        :method => :get
+  =link_to "Add Subtitle", "", html_option = {:id => "add_subtitle_field"}
+  =javascript_tag "$(document).ready(function(){$('a#add_subtitle_field').trigger('click');});"
 
   .actions
     = f.submit

@@ -10,6 +10,6 @@ javascripts:
     - public/javascripts/image_preview.js
     - public/javascripts/util.js
 
-  ajax_subtitle:
+  subtitle_field:
     - app/views/subtitles/subtitle_form.jst
-
+    - public/coffeescripts/subtitle_field.js
