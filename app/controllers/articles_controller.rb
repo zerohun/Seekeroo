@@ -61,9 +61,21 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     @article = Article.find(params[:id])
+    params[:article][:subtitles_attributes].each_pair do |key, value|
+      if value[:text] == nil or 
+         value[:text] == ""
+           params[:article][:subtitles_attributes].delete(:"#{key}")
+      end
+    end
+    size_of_subtitles = params[:article][:subtitles_attributes].length
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
+        @article.subtitles.each_with_index do |subtitle, index|
+          if index > size_of_subtitles - 1
+            subtitle.destroy
+          end
+        end
         format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
         format.xml  { head :ok }
       else

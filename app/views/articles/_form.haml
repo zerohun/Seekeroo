@@ -10,14 +10,12 @@
           %li= msg
   = iframe_for_upload(new_image_path, "image_image", "new_image")
   = image_preview(@article, :image)
-  - number = 0
   #subtitles
-    -#=render :partial => "subtitles/form",
-      -#:locals => { :number => number}
+    =render :partial => "subtitles/form"
 
 
   =link_to "Add Subtitle", "", html_option = {:id => "add_subtitle_field"}
-  =javascript_tag "$(document).ready(function(){$('a#add_subtitle_field').trigger('click');});"
+
 
   .actions
     = f.submit

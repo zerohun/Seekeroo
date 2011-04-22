@@ -1,26 +1,30 @@
-/* DO NOT MODIFY. This file was compiled Thu, 21 Apr 2011 15:09:06 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_field.coffee
+/* DO NOT MODIFY. This file was compiled Fri, 22 Apr 2011 06:21:11 GMT from
+ * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_field.coffee
  */
 
 (function() {
-  var renumberSubtitleFields;
+  var removeField, renumberSubtitleFields;
+  removeField = function(buttonobj) {
+    buttonobj.parent().remove();
+    return renumberSubtitleFields();
+  };
   renumberSubtitleFields = function() {
     $("div.field").each(function(index) {
       return $(this).attr("id", index);
     });
     $("div.field label").each(function(index) {
       $(this).attr("for", "article_subtitles_attributes_" + index + "_text");
-      return $(this).text("Subtitle " + index);
+      return $(this).text("Subtitle " + (index + 1));
     });
     return $("div.field textarea").each(function(index) {
-      $(this).attr("id", "article_subtitles_attributes_" + number + "_text");
-      return $(this).attr("name", "article[subtitles_attributes][" + number + "][text]");
+      $(this).attr("id", "article_subtitles_attributes_" + index + "_text");
+      return $(this).attr("name", "article[subtitles_attributes][" + index + "][text]");
     });
   };
   $(document).ready(function() {
-    $("a.remove_subtitle_field").click(function(event) {
-      $(this).parent().remove();
-      return event.preventDefault();
+    $("a.remove_subtitle_field").click(function(e) {
+      e.preventDefault();
+      return removeField($(this));
     });
     return $("a#add_subtitle_field").click(function(e) {
       var number, subtitleHTML;
@@ -31,9 +35,8 @@
       $('div#subtitles').append(subtitleHTML);
       e.preventDefault();
       return $("a#remove_field_id_" + number).click(function(event) {
-        $(this).parent().remove();
         event.preventDefault();
-        return renumberSubtitleFields();
+        return removeField($(this));
       });
     });
   });
