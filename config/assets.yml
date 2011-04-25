@@ -13,3 +13,7 @@ javascripts:
   subtitle_field:
     - app/views/subtitles/subtitle_form.jst
     - public/coffeescripts/subtitle_field.js
+
+  subtitle_view:
+    - public/coffeescripts/subtitle_class.js
+    - public/coffeescripts/subtitle_view.js

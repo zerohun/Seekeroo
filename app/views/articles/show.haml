@@ -1,12 +1,15 @@
+= include_javascripts :subtitle_view
 %p#notice= notice
 #image_view
-  = tag("img", {:src => size_for_pc_image_path(@article.image) })
+  %a{:id => "nextsubtitle"}
+    = tag("img", {:src => size_for_pc_image_path(@article.image) })
+
 
 .subtitle
-  = @article.subtitles.each do |subtitle|
-    <p>
-    = subtitle.text
-    </p>
+  #subtltie_view
+    it's view
+    - @article.subtitles.each_with_index do |subtitle, index|
+      %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
 = link_to 'Edit', edit_article_path(@article)
 = link_to 'Delete', @article, :method => :delete,

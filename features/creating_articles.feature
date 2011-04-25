@@ -12,7 +12,7 @@ Feature: Creating articles
     And I attach the file "spec/fixtures/sarah.jpg" to "File" in frame "upload_iframe"
     Then I should see the image file "sarah.jpg" in "div#previewdiv" 
     And I fill in "Subtitle 1" with "She is my beautiful girl friend Sarah"
-    And I press "Add Subtitle"
+    And I follow "Add Subtitle"
     And I fill in "Subtitle 2" with "We were wating pho in the Vietnamese restaurant"
     And I press "Create Article"
     Then I should see "Article was successfully created."

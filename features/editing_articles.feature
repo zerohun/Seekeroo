@@ -19,7 +19,7 @@ Feature: Editing articles
     And I attach the file "spec/fixtures/halloween.jpg" to "File" in frame "upload_iframe"
     Then I should see the changed image file "halloween.jpg" in "div#previewdiv"
     And  I fill in "Subtitle 1" with "With Sarah in halloween day"
-    And  I press "Add Subtitle"
+    And  I follow "Add Subtitle"
     And  I fill in "Subtitle 2" with "We were by a bar in Itaewon"
     And I press "Update Article"
     Then I should be on the article page
