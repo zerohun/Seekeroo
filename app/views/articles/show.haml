@@ -6,10 +6,14 @@
 
 
 .subtitle
-  #subtltie_view
-    it's view
+  #subtitle_view
+    %p
+      it's view
     - @article.subtitles.each_with_index do |subtitle, index|
       %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
+  #subtitle_page_count
+    %p
+      (0/0)
 
 = link_to 'Edit', edit_article_path(@article)
 = link_to 'Delete', @article, :method => :delete,

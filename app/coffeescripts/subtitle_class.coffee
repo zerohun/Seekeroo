@@ -12,9 +12,11 @@ class Subtitle
     @textlist[@current]
 
   next: ->
-    if @size < @current
+    if @size - 1 > @current
       @current = @current + 1
-    getText()
+    else
+      @current = 0
+    @getText()
 
   reset: ->
     @current = 0
@@ -22,5 +24,24 @@ class Subtitle
   prev: ->
     if @current > 0
       @current = @current - 1
-      getText()
+      @getText()
 
+  pagecount: ->
+    "(#{@current+1}/#{@size})"
+
+
+$(document).ready( ->
+
+  subtitles = new Subtitle()
+
+  $("subtitle").filter((index)->
+    subtitles.addText $("subtitle##{index}").data("text")
+  )
+  $("div#subtitle_view p").text(subtitles.getText())
+  $("div#subtitle_page_count p").text(subtitles.pagecount())
+  $("a#nextsubtitle").click( (event)->
+    event.preventDefault()
+    $("div#subtitle_view p").text(subtitles.next())
+    $("div#subtitle_page_count p").text(subtitles.pagecount())
+  )
+)
