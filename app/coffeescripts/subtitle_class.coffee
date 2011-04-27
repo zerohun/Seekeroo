@@ -35,6 +35,7 @@ class Subtitle
       text = "(#{@current+1}/#{@size})"
     text
 
+
 printSubtitle = (subtitle_list, page)->
   if(page == "current")
     $("div#subtitle_view p").text(subtitle_list.getText())
@@ -69,8 +70,13 @@ $(document).ready( ->
   $("div#image_view").append("<div id='area_rectangle' class='area_rectangle'></div>")
   $("div#image_view").append("<div id='debugbox'></div>")
 
-  image_width = $("img#view_image").css("width")
-  image_height = $("img#view_image").css("height")
+
+  image_width = $("img#showimage").data("width")
+  image_height = $("img#showimage").data("height")
+  
+
+  $("div#image_view").css("width","#{image_width}px")
+  $("div#image_view").css("height","#{image_height}px")
 
   ismousedown = false
   startX = 0
@@ -97,13 +103,11 @@ $(document).ready( ->
       $("div#area_rectangle").css("top", "#{startY}px")
       $("div#area_rectangle").css("width", "0px")
       $("div#area_rectangle").css("height", "0px")
-
-
       $("div#debugbox").text("down")
+    ).mouseleave((event)->
+      $("div#debugbox").text("leave")
+      ismousedown = false
     )
-
-
-    
     $("div#image_view").mousemove((event)->
       if ismousedown == true
         width = event.pageX - startX

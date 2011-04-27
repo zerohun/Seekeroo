@@ -3,7 +3,10 @@
 
 #image_view
   %a{:id => "nextsubtitle"}
-    = tag("img", {:src => size_for_pc_image_path(@article.image) })
+    = tag("img", {:id => "showimage", 
+                  :src => size_for_pc_image_path(@article.image),
+                  :"data-width" => @article.image.image.width.to_s,
+                  :"data-height" => @article.image.image.height.to_s})
 
 %a{:id => "trigger_tag"}
   tag

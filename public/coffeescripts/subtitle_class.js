@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Wed, 27 Apr 2011 07:28:44 GMT from
- * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_class.coffee
+/* DO NOT MODIFY. This file was compiled Wed, 27 Apr 2011 14:13:51 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_class.coffee
  */
 
 (function() {
@@ -80,8 +80,10 @@
     $("div#image_view").append("<div id='selected' class='selected'></div>");
     $("div#image_view").append("<div id='area_rectangle' class='area_rectangle'></div>");
     $("div#image_view").append("<div id='debugbox'></div>");
-    image_width = $("img#view_image").css("width");
-    image_height = $("img#view_image").css("height");
+    image_width = $("img#showimage").data("width");
+    image_height = $("img#showimage").data("height");
+    $("div#image_view").css("width", "" + image_width + "px");
+    $("div#image_view").css("height", "" + image_height + "px");
     ismousedown = false;
     startX = 0;
     startY = 0;
@@ -107,6 +109,9 @@
         $("div#area_rectangle").css("width", "0px");
         $("div#area_rectangle").css("height", "0px");
         return $("div#debugbox").text("down");
+      }).mouseleave(function(event) {
+        $("div#debugbox").text("leave");
+        return ismousedown = false;
       });
       return $("div#image_view").mousemove(function(event) {
         var height, width;
