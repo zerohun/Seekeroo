@@ -82,9 +82,6 @@ class Rect
 
     @applyStyle()
 
-
-
-
   show: ()->
     $("div##{@div_id}").css("visibility", "visible")
     @applyStyle()
@@ -95,7 +92,10 @@ class Rect
 
 $(document).ready(->
 
-  
+  ///^{ to prevent drag image in firefox  }///
+  $("img#showimage").mousedown((event)->
+    event.preventDefault()
+  )
   size = {
     width: $("img#showimage").data("width")
     height: $("img#showimage").data("height")

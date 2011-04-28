@@ -19,7 +19,7 @@ Feature: Creating articles
     Then I should be on the article page
     Then I should see the image file "sarah.jpg" in "div#image_view"
     Then I should see "She is my beautiful girl friend Sarah"
-    When I click "div#image_view > a#nextsubtitle"
+    When I click "div#image_view"
     Then I should see "We were wating pho in the Vietnamese restaurant"
 
   Scenario: Creating a article without attaching image file

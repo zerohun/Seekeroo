@@ -26,4 +26,5 @@ Feature: Editing articles
     Then I should see "Article was successfully updated."
     Then I should see the image file "halloween.jpg" in "div#image_view"
     Then I should see "With Sarah in halloween day"
+    Then I click "div#image_view"
     Then I should see "We were by a bar in Itaewon"

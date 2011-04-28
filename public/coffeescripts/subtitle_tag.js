@@ -1,11 +1,11 @@
-/* DO NOT MODIFY. This file was compiled Thu, 28 Apr 2011 06:41:51 GMT from
- * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_tag.coffee
+/* DO NOT MODIFY. This file was compiled Thu, 28 Apr 2011 14:07:41 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_tag.coffee
  */
 
 (function() {
   var Rect, TaggingPanel;
   TaggingPanel = (function() {
-    function TaggingPanel(panel, startButton, selectionBox, size) {
+    function TaggingPanel(panel, startButton, selectionBox) {
       this.ismousedown = false;
       $("body").append("<div id='debugbox'> </div>");
       startButton.click(function() {
@@ -99,6 +99,9 @@
   })();
   $(document).ready(function() {
     var html_option, selectionRect, size, taggingPanel;
+    $("img#showimage").mousedown(function(event) {
+      return event.preventDefault();
+    });
     size = {
       width: $("img#showimage").data("width"),
       height: $("img#showimage").data("height")
@@ -110,6 +113,6 @@
     };
     selectionRect = new Rect(html_option, $("div#image_view"));
     selectionRect.show();
-    return taggingPanel = new TaggingPanel($("div#image_view"), $("a#trigger_tag"), selectionRect, size);
+    return taggingPanel = new TaggingPanel($("div#image_view"), $("a#trigger_tag"), selectionRect);
   });
 }).call(this);

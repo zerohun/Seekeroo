@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 27 Apr 2011 14:13:51 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 28 Apr 2011 13:14:22 GMT from
  * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_class.coffee
  */
 
