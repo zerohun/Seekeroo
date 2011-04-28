@@ -1,9 +1,9 @@
 =include_javascripts :subtitle_view
+=include_javascripts :subtitle_tagging
 %p#notice= notice
 
 #image_view
-  %a{:id => "nextsubtitle"}
-    = tag("img", {:id => "showimage", 
+  = tag("img", {:id => "showimage", 
                   :src => size_for_pc_image_path(@article.image),
                   :"data-width" => @article.image.image.width.to_s,
                   :"data-height" => @article.image.image.height.to_s})

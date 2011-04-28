@@ -15,5 +15,8 @@ javascripts:
     - public/coffeescripts/subtitle_field.js
 
   subtitle_view:
-    - public/coffeescripts/subtitle_class.js
     - public/coffeescripts/subtitle_view.js
+
+  subtitle_tagging:
+    - public/coffeescripts/subtitle_tag.js
+
