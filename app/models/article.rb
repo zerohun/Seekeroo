@@ -5,10 +5,10 @@ class Article < ActiveRecord::Base
       article.errors.add(:base, "You should upload at least one image file") 
     end
   end
-
   belongs_to :image
-  has_many :subtitles
 
-  accepts_nested_attributes_for :subtitles
+  has_many :tagboxes
+  accepts_nested_attributes_for :tagboxes
+
 
 end

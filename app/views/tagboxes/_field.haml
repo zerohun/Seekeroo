@@ -1,0 +1,9 @@
+= fields_for @article do |f|
+  = f.fields_for :tagboxes do |tagbox|
+    .fields
+      = tagbox.hidden_field :left
+      = tagbox.hidden_field :top
+      = tagbox.hidden_field :width
+      = tagbox.hidden_field :height
+      #subtitles
+        =render :partial => "subtitles/form"

@@ -13,7 +13,7 @@
 .subtitle
   #subtitle_view
     %p
-    - @article.subtitles.each_with_index do |subtitle, index|
+    - @article.tagboxes.first.subtitles.each_with_index do |subtitle, index|
       %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
   #subtitle_page_count
     %p

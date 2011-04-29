@@ -1,0 +1,2 @@
+module TagboxesHelper
+end

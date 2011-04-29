@@ -25,7 +25,8 @@ class ArticlesController < ApplicationController
   # GET /articles/new.xml
   def new
     @article = Article.new
-    @article.subtitles.build
+    @article.tagboxes.build
+    @article.tagboxes.first.subtitles.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +43,6 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
-
     respond_to do |format|
       if @article.save
         image = Image.find_by_id(@article.image_id)

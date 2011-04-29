@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110412133151) do
+ActiveRecord::Schema.define(:version => 20110429043604) do
 
   create_table "articles", :force => true do |t|
     t.datetime "created_at"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(:version => 20110412133151) do
 
   create_table "subtitles", :force => true do |t|
     t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tagbox_id"
+  end
+
+  create_table "tagboxes", :force => true do |t|
+    t.integer  "left"
+    t.integer  "top"
+    t.integer  "width"
+    t.integer  "height"
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"

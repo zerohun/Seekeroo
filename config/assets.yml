@@ -20,3 +20,6 @@ javascripts:
   subtitle_tagging:
     - public/coffeescripts/subtitle_tag.js
 
+  create_default_tag:
+    - public/coffeescripts/create_default_tag.js
+

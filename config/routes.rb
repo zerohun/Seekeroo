@@ -2,11 +2,13 @@ Fingeroo::Application.routes.draw do
 
 
   resources :articles do
-    resources :subtitles
+    resources :tagboxes do
+      resources :subtitles
+    end
   end
 
+  resources :tagboxes
   resources :subtitles
-
   resources :images do
     member do
       get 'size_for_pc'

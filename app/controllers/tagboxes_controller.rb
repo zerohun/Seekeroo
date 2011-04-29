@@ -1,0 +1,2 @@
+class TagboxesController < ApplicationController
+end

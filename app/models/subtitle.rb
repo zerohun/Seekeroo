@@ -1,4 +1,4 @@
 class Subtitle < ActiveRecord::Base
-  belongs_to :article
+  belongs_to :tagbox
 
 end
