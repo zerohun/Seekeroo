@@ -1,39 +1,9 @@
-/* DO NOT MODIFY. This file was compiled Fri, 29 Apr 2011 10:17:37 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_tag.coffee
+/* DO NOT MODIFY. This file was compiled Fri, 29 Apr 2011 16:16:51 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/Rect.coffee
  */
 
 (function() {
-  var Rect, TaggingPanel;
-  TaggingPanel = (function() {
-    function TaggingPanel(panel, startButton, selectionBox) {
-      this.ismousedown = false;
-      $("body").append("<div id='debugbox'> </div>");
-      startButton.click(function() {
-        panel.unbind('click');
-        return panel.mouseup(function(event) {
-          this.ismousedown = false;
-          return $("div#debugbox").text("up");
-        }).mousedown(function(event) {
-          this.ismousedown = true;
-          this.startX = event.pageX;
-          this.startY = event.pageY;
-          return $("div#debugbox").text("down");
-        }).mousemove(function(event) {
-          var endX, endY;
-          if (this.ismousedown) {
-            endX = event.pageX;
-            endY = event.pageY;
-            return selectionBox.setPoint(this.startX, this.startY, endX, endY);
-          }
-        }).mouseleave(function(event) {
-          this.ismousedown = false;
-          return $("div#debugbox").text("leave");
-        });
-      });
-    }
-    return TaggingPanel;
-  })();
-  Rect = (function() {
+  this.Rect = (function() {
     function Rect(html_option, target) {
       this.style = {};
       this.html_option = html_option;
@@ -97,22 +67,4 @@
     };
     return Rect;
   })();
-  $(document).ready(function() {
-    /^{topreventdragimageinfirefox}/;    var html_option, selectionRect, size, taggingPanel;
-    $("img#showimage").mousedown(function(event) {
-      return event.preventDefault();
-    });
-    size = {
-      width: $("img#showimage").data("width"),
-      height: $("img#showimage").data("height")
-    };
-    $("div#image_view").css("width", size["width"]);
-    html_option = {
-      id: "selection_rectangle",
-      "class": "selection_rectangle"
-    };
-    selectionRect = new Rect(html_option, $("div#image_view"));
-    selectionRect.show();
-    return taggingPanel = new TaggingPanel($("div#image_view"), $("a#trigger_tag"), selectionRect);
-  });
 }).call(this);

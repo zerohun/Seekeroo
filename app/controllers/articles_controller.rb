@@ -61,17 +61,17 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     @article = Article.find(params[:id])
-    params[:article][:subtitles_attributes].each_pair do |key, value|
+    params[:article][:tagboxes_attributes][:"0"][:subtitles_attributes].each_pair do |key, value|
       if value[:text] == nil or 
          value[:text] == ""
-           params[:article][:subtitles_attributes].delete(:"#{key}")
+           params[:article][:tagboxes_attributes][:"0"][:subtitles_attributes].delete(:"#{key}")
       end
     end
-    size_of_subtitles = params[:article][:subtitles_attributes].length
+    size_of_subtitles = params[:article][:tagboxes_attributes][:"0"][:subtitles_attributes].length
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        @article.subtitles.each_with_index do |subtitle, index|
+        @article.tagboxes.first.subtitles.each_with_index do |subtitle, index|
           if index > size_of_subtitles - 1
             subtitle.destroy
           end

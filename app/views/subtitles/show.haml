@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @subtitle.text
+%p
+  %b Article:
+  = @subtitle.article_id
+
+= link_to 'Edit', edit_subtitle_path(@subtitle)
+\|
+= link_to 'Back', subtitles_path

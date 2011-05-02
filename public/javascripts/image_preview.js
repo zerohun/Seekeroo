@@ -14,5 +14,7 @@ function createResponder(target_id, hiddenfield_id)
     "jQuery('#{0}').attr('src',image_src);".format(target_id) +
     "jQuery('#{0}').data('width', image_width);".format(target_id) +
     "jQuery('#{0}').data('height', image_height);".format(target_id) +
-    inputtohiddenfield);
+    inputtohiddenfield + 
+    "refreshImageSize()");
+
 }

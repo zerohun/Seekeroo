@@ -1,11 +1,11 @@
 
-= form_for Tagbox.new, :remote => true do |f|
+= form_for @tagbox, :remote => true do |f|
   .fields
     = f.hidden_field :left
     = f.hidden_field :top
     = f.hidden_field :width
     = f.hidden_field :height
     #subtitles
-      =render :partial => "subtitles/form"
+      =render :partial => "subtitles/tagbox_field"
   .actions
     = f.submit

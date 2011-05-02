@@ -11,14 +11,16 @@ javascripts:
     - public/javascripts/util.js
 
   subtitle_field:
-    - app/views/subtitles/subtitle_form.jst
     - public/coffeescripts/subtitle_field.js
 
   subtitle_view:
+    - public/coffeescripts/Subtitles.js
     - public/coffeescripts/subtitle_view.js
 
   subtitle_tagging:
-    - public/coffeescripts/subtitle_tag.js
+    - public/coffeescripts/TaggingPanel.js
+    - public/coffeescripts/Rect.js
+    - public/coffeescripts/creating_tag.js
 
   create_default_tag:
     - public/coffeescripts/create_default_tag.js

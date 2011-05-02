@@ -1,0 +1,21 @@
+%h1 Listing subtitles
+
+%table
+  %tr
+    %th Text
+    %th Article
+    %th
+    %th
+    %th
+
+  - @subtitles.each do |subtitle|
+    %tr
+      %td= subtitle.text
+      %td= subtitle.article_id
+      %td= link_to 'Show', subtitle
+      %td= link_to 'Edit', edit_subtitle_path(subtitle)
+      %td= link_to 'Destroy', subtitle, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Subtitle', new_subtitle_path
