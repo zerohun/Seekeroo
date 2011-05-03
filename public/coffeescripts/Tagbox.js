@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 07:16:14 GMT from
- * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/Tagbox.coffee
+/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 14:20:31 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/Tagbox.coffee
  */
 
 (function() {
@@ -21,8 +21,8 @@
     Tagbox.prototype.draw = function() {
       this.tagbox.css("left", this.left);
       this.tagbox.css("top", this.top);
-      this.tagbox.css("width", "" + this.width + "pt");
-      this.tagbox.css("height", "" + this.height + "pt");
+      this.tagbox.css("width", "" + this.width + "px");
+      this.tagbox.css("height", "" + this.height + "px");
       return this.tagbox.data("isDraw", "true");
     };
     Tagbox.prototype.isDraw = function() {

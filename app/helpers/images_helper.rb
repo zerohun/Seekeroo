@@ -8,8 +8,8 @@ module ImagesHelper
       generated_html += "<script type='text/javascript'>"
       generated_html += "\n   window.parent.respond_from_server('#{new_image_path}',"
       generated_html += "\n                '#{image_model_obj.id}',"
-      generated_html += "\n                '#{image_model_obj.image.width}',"
-      generated_html += "\n                '#{image_model_obj.image.height}');"
+      generated_html += "\n                '#{image_model_obj.image.width("pc")}',"
+      generated_html += "\n                '#{image_model_obj.image.height("pc")}');"
       generated_html += "</script>"
     end
     generated_html.html_safe

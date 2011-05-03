@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 29 Apr 2011 16:23:37 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 14:37:04 GMT from
  * /home/zerohun/Projects/Fingeroo/app/coffeescripts/creating_tag.coffee
  */
 
@@ -23,6 +23,6 @@
     };
     selectionRect = new Rect(html_option, $("div#image_view"));
     selectionRect.show();
-    return taggingPanel = new TaggingPanel($("div#image_view"), $("a#trigger_tag"), selectionRect);
+    return taggingPanel = new TaggingPanel($("div.tagbox").first(), $("a#trigger_tag"), selectionRect);
   });
 }).call(this);

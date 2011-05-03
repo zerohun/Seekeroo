@@ -23,7 +23,7 @@ $(document).ready(->
   }
   selectionRect = new Rect(html_option, $("div#image_view"))
   selectionRect.show()
-  taggingPanel = new TaggingPanel($("div#image_view"),
+  taggingPanel = new TaggingPanel($("div.tagbox").first(),
                                   $("a#trigger_tag"),
                                   selectionRect)
 

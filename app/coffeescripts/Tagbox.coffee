@@ -15,8 +15,8 @@ class @Tagbox
   draw: ->
     @tagbox.css("left", @left)
     @tagbox.css("top", @top)
-    @tagbox.css("width", "#{@width}pt")
-    @tagbox.css("height", "#{@height}pt")
+    @tagbox.css("width", "#{@width}px")
+    @tagbox.css("height", "#{@height}px")
     @tagbox.data("isDraw", "true")
 
   isDraw: ->
