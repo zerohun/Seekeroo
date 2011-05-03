@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Fri, 29 Apr 2011 10:17:37 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_tag.coffee
+/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 07:21:59 GMT from
+ * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_tag.coffee
  */
 
 (function() {
@@ -106,7 +106,7 @@
       width: $("img#showimage").data("width"),
       height: $("img#showimage").data("height")
     };
-    $("div#image_view").css("width", size["width"]);
+    $("div#image_view").css("width", "" + size["width"] + "pt");
     html_option = {
       id: "selection_rectangle",
       "class": "selection_rectangle"

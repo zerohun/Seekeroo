@@ -8,35 +8,25 @@
                   :"data-width" => @article.image.image.width.to_s,
                   :"data-height" => @article.image.image.height.to_s})
 
-  - @article.tagboxes.each do |tagbox|
-    .tagbox{:id => tagbox.id, 
-      :"data-left" => tagbox.left, 
-      :"data-top" => tagbox.top, 
-      :"data-width" => tagbox.width, 
-      :"data-height" => tagbox.height}
-
 %a{:id => "trigger_tag"}
   tag
 .subtitle
   #subtitle_view
     %p
-
-  #subtitle_page_count
+  #page_view
     %p
       (0/0)
 #data_elements
   #tags
     -@article.tagboxes.each_with_index do |tagbox, index|
-      %tagbox{:id => "#{index}", :"data-left" => "#{tagbox.left}",
-                                 :"data-top" => "#{tagbox.top}",
-                                 :"data-width" => "#{tagbox.width}",
-                                 :"data-height" => "#{tagbox.height}"}
+      .tagbox{:id => "#{tagbox.id}", :"data-left" => "#{tagbox.left}",
+                                     :"data-top" => "#{tagbox.top}",
+                                     :"data-width" => "#{tagbox.width}",
+                                     :"data-height" => "#{tagbox.height}"}
 
         #subtitles
           -tagbox.subtitles.each_with_index do |subtitle, index|
             %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
-
-
 
 #subtitle_field_for_tagbox
 

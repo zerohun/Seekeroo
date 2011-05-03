@@ -1,19 +1,25 @@
-/* DO NOT MODIFY. This file was compiled Mon, 02 May 2011 14:44:35 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_view.coffee
+/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 06:43:52 GMT from
+ * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_view.coffee
  */
 
 (function() {
   $(document).ready(function() {
-    var page_view, subtitle_view, subtitles;
-    subtitles = new Subtitles();
-    $("subtitle").filter(function(index) {
-      return subtitles.addText($("subtitle#" + index).data("text"));
-    });
-    subtitle_view = $("div#subtitle_view p");
-    page_view = $("div#subtitle_page_count p");
-    return $("div#image_view").click(function(event) {
-      event.preventDefault();
-      return subtitles.printSubtitle("next", subtitle_view, page_view);
+    var number_of_tags, tagboxes;
+    number_of_tags = $("div.tagbox");
+    tagboxes = [];
+    return $("div.tagbox").each(function() {
+      var a, subtitles, tagboxobj;
+      subtitles = new Subtitles();
+      $(this).find("subtitle").each(function() {
+        return subtitles.addText($(this).data("text"));
+      });
+      a = subtitles.deepCopy();
+      return tagboxobj = new Tagbox({
+        id: $(this).attr("id"),
+        subtitles: subtitles.deepCopy(),
+        subtitle_view: $("div#subtitle_view p"),
+        page_view: $("div#page_view p")
+      });
     });
   });
 }).call(this);

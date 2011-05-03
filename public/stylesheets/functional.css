@@ -1,8 +1,14 @@
+div.tagbox{
+
+  position:absolute;
+  border:1px solid gray;
+}
 div.selection_rectangle{
 
   border:1px dotted white;
   outline-style:dotted;
   outline-width:1px;
+
   position:absolute;
 }
 

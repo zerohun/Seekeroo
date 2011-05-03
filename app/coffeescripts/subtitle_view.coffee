@@ -1,14 +1,20 @@
 
 $(document).ready( ->
   
-  subtitles = new Subtitles()
-  $("subtitle").filter((index)->
-    subtitles.addText $("subtitle##{index}").data("text")
-  )
-  subtitle_view = $("div#subtitle_view p")
-  page_view = $("div#subtitle_page_count p")
-  $("div#image_view").click((event)->
-    event.preventDefault()
-    subtitles.printSubtitle("next", subtitle_view, page_view)
+  number_of_tags = $("div.tagbox")
+  tagboxes = []
+  $("div.tagbox").each( ->
+    subtitles = new Subtitles()
+    $(this).find("subtitle").each(->
+      subtitles.addText($(this).data("text"))
+    )
+    a = subtitles.deepCopy()
+    tagboxobj = new Tagbox({
+      id: $(this).attr("id"),
+      subtitles: subtitles.deepCopy(),
+      subtitle_view: $("div#subtitle_view p")
+      page_view: $("div#page_view p")
+    })
   )
 )
+

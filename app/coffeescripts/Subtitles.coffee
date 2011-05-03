@@ -35,8 +35,12 @@ class @Subtitles
       text = "(#{@current+1}/#{@size})"
     text
 
+  deepCopy: ->
+    copied = new Subtitles()
+    copied.addText(text) for text in @textlist
+    copied
 
-  printSubtitle : (page, subtitle_view, page_view)->
+  print: (page, subtitle_view, page_view)->
     if(page == "current")
       subtitle_view.text(@getText())
       page_view.text(@pagecount())

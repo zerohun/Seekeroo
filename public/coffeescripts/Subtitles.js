@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Mon, 02 May 2011 13:32:04 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/Subtitles.coffee
+/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 06:19:18 GMT from
+ * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/Subtitles.coffee
  */
 
 (function() {
@@ -45,7 +45,17 @@
       }
       return text;
     };
-    Subtitles.prototype.printSubtitle = function(page, subtitle_view, page_view) {
+    Subtitles.prototype.deepCopy = function() {
+      var copied, text, _i, _len, _ref;
+      copied = new Subtitles();
+      _ref = this.textlist;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        text = _ref[_i];
+        copied.addText(text);
+      }
+      return copied;
+    };
+    Subtitles.prototype.print = function(page, subtitle_view, page_view) {
       if (page === "current") {
         subtitle_view.text(this.getText());
         page_view.text(this.pagecount());
