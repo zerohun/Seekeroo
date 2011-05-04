@@ -1,12 +1,21 @@
-=include_javascripts :subtitle_view
-=include_javascripts :subtitle_tagging
+= include_javascripts :tagbox
 %p#notice= notice
 
 #image_view
-  = tag("img", {:id => "showimage", 
-                  :src => size_for_pc_image_path(@article.image),
-                  :"data-width" => @article.image.image.width.to_s,
-                  :"data-height" => @article.image.image.height.to_s})
+  %canvas{:id => "image_viewer",
+          :width => @article.image.image.width("pc"),
+          :height => @article.image.image.height("pc"),
+          :"data-imgsrc" => size_for_pc_image_path(@article.image)}
+
+  -@article.tagboxes.each_with_index do |tagbox, index|
+    %tagbox{:id => "#{tagbox.id}", :"data-left" => "#{tagbox.left}",
+                                   :"data-top" => "#{tagbox.top}",
+                                   :"data-width" => "#{tagbox.width}",
+                                   :"data-height" => "#{tagbox.height}"}
+
+      #subtitles
+        -tagbox.subtitles.each_with_index do |subtitle, index|
+          %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
 %a{:id => "trigger_tag"}
   tag
@@ -16,17 +25,7 @@
   #page_view
     %p
       (0/0)
-#data_elements
-  #tags
-    -@article.tagboxes.each_with_index do |tagbox, index|
-      .tagbox{:id => "#{tagbox.id}", :"data-left" => "#{tagbox.left}",
-                                     :"data-top" => "#{tagbox.top}",
-                                     :"data-width" => "#{tagbox.width}",
-                                     :"data-height" => "#{tagbox.height}"}
 
-        #subtitles
-          -tagbox.subtitles.each_with_index do |subtitle, index|
-            %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
 #subtitle_field_for_tagbox
 

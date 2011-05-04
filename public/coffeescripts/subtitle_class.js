@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Thu, 28 Apr 2011 13:14:22 GMT from
- * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_class.coffee
+/* DO NOT MODIFY. This file was compiled Wed, 04 May 2011 00:54:25 GMT from
+ * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_class.coffee
  */
 
 (function() {

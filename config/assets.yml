@@ -26,3 +26,6 @@ javascripts:
   create_default_tag:
     - public/coffeescripts/create_default_tag.js
 
+  tagbox:
+    - public/coffeescripts/initialize_canvas.js
+
