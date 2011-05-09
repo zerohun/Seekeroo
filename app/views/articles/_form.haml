@@ -11,7 +11,8 @@
   = iframe_for_upload(new_image_path, "image_image", "new_image")
   = image_preview(@article, :image)
   #tagbox
-    =render :partial => "tagboxes/field"
+    =render :file => "tagboxes/_field",
+            :object => @article.tagboxes.first
 
 
   =link_to "Add Subtitle", "", html_option = {:id => "add_subtitle_field"}

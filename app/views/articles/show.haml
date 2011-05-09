@@ -1,4 +1,5 @@
 = include_javascripts :tagbox
+= include_javascripts :subtitle_field
 %p#notice= notice
 
 #image_view
@@ -17,7 +18,7 @@
         -tagbox.subtitles.each_with_index do |subtitle, index|
           %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
-%a{:id => "trigger_tag"}
+%a{:id => "start_tagging"}
   tag
 .subtitle
   #subtitle_view
@@ -25,6 +26,8 @@
   #page_view
     %p
       (0/0)
+
+#tagbox_form
 
 
 #subtitle_field_for_tagbox

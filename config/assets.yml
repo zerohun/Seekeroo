@@ -28,4 +28,10 @@ javascripts:
 
   tagbox:
     - public/coffeescripts/initialize_canvas.js
+    - public/coffeescripts/AreaSelector.js
+    - public/coffeescripts/TagboxCreator.js
+    - public/coffeescripts/TagboxManager.js
+    - public/coffeescripts/Tagbox.js
+    - public/coffeescripts/Subtitles.js
+
 

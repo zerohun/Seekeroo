@@ -1,9 +1,9 @@
-/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 01:29:56 GMT from
- * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/subtitle_field.coffee
+/* DO NOT MODIFY. This file was compiled Sat, 07 May 2011 06:38:49 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/subtitle_field.coffee
  */
 
 (function() {
-  var changeIDNumber, changeNameNumber, duplicate, removeField, renumberSubtitleFields;
+  var changeIDNumber, changeNameNumber, renumberSubtitleFields;
   changeNameNumber = function(target, index) {
     var beforetext, newtext;
     beforetext = target.attr("name");
@@ -16,7 +16,7 @@
     newtext = beforetext.replace("subtitles_attributes_0", "subtitles_attributes_" + index);
     return target.attr(attribute, newtext);
   };
-  duplicate = function(target, index) {
+  this.duplicate = function(target, index) {
     var cloned;
     cloned = target.clone(true);
     changeIDNumber(cloned.find("label"), index, "for");
@@ -27,7 +27,7 @@
     cloned.attr("id", index);
     return cloned.appendTo(target.parent());
   };
-  removeField = function(buttonobj) {
+  this.removeField = function(buttonobj) {
     buttonobj.parent().remove();
     return renumberSubtitleFields();
   };
@@ -45,19 +45,23 @@
     });
   };
   $(document).ready(function() {
-    $("a.remove_subtitle_field").click(function(e) {
-      e.preventDefault();
-      return removeField($(this));
-    });
-    return $("a#add_subtitle_field").click(function(e) {
-      var number;
-      e.preventDefault();
-      $("a#remove_field_id_" + number).click(function(event) {
-        event.preventDefault();
+    if ($("a.remove_subtitle_field").length > 0) {
+      $("a.remove_subtitle_field").click(function(e) {
+        e.preventDefault();
         return removeField($(this));
       });
-      number = $('div.subtitlefields').length;
-      return duplicate($('div.subtitlefields#0'), number);
-    });
+    }
+    if ($("a#add_subtitle_field").length > 0) {
+      return $("a#add_subtitle_field").click(function(e) {
+        var number;
+        e.preventDefault();
+        $("a#remove_field_id_" + number).click(function(event) {
+          event.preventDefault();
+          return removeField($(this));
+        });
+        number = $('div.subtitlefields').length;
+        return duplicate($('div.subtitlefields#0'), number);
+      });
+    }
   });
 }).call(this);

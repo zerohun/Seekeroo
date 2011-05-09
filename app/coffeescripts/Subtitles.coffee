@@ -1,7 +1,7 @@
 class @Subtitles
   constructor: ->
     @textlist = []
-    @current = 0
+    @current = -1
     @size = 0
 
   addText: (textdata)->

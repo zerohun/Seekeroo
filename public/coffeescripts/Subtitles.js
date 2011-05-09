@@ -1,12 +1,12 @@
-/* DO NOT MODIFY. This file was compiled Tue, 03 May 2011 06:19:18 GMT from
- * /home/zerohun/rails_apps/Fingeroo/app/coffeescripts/Subtitles.coffee
+/* DO NOT MODIFY. This file was compiled Thu, 05 May 2011 13:09:28 GMT from
+ * /home/zerohun/Projects/Fingeroo/app/coffeescripts/Subtitles.coffee
  */
 
 (function() {
   this.Subtitles = (function() {
     function Subtitles() {
       this.textlist = [];
-      this.current = 0;
+      this.current = -1;
       this.size = 0;
     }
     Subtitles.prototype.addText = function(textdata) {

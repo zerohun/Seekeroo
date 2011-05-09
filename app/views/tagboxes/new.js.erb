@@ -1,0 +1,32 @@
+registerEvents = function()
+{
+  $("a.remove_subtitle_field").click(function(event){
+    event.preventDefault();
+    removeField($(this));
+  });
+  $("a#add_subtitle_field").click(function(event){
+    event.preventDefault();
+
+    $("a#remove_field_id_#{number}").click(function(event){
+      event.preventDefault();
+      removeField($(this));
+    });
+    number = $('div.subtitlefields').length;
+    duplicate($('div.subtitlefields').first(), number);
+  });
+  $("input#tagbox_left").val("<%= @left %>")
+  $("input#tagbox_top").val("<%= @top %>")
+  $("input#tagbox_width").val("<%= @width %>")
+  $("input#tagbox_height").val("<%= @height %>")
+  $("input#tagbox_article_id").val("<%= @article_id %>")
+
+}
+
+
+
+html = "<%= (render "tagboxes/form").gsub("\"", "'").gsub("\n", "") %>";
+html += "<script type='text/javascript'>"
+html += "registerEvents()"
+html += "</script>"
+
+$("div#tagbox_form").html(html);

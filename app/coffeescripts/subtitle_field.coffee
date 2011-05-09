@@ -10,7 +10,7 @@ changeIDNumber = (target, index, attribute)->
                                "subtitles_attributes_#{index}")
   target.attr(attribute, newtext)
 
-duplicate = (target, index)->
+@duplicate = (target, index)->
   cloned = target.clone(true)
   changeIDNumber(cloned.find("label"), index, "for")
   changeIDNumber(cloned.find("textarea"), index, "id")
@@ -20,7 +20,7 @@ duplicate = (target, index)->
   cloned.attr("id",index)
   cloned.appendTo target.parent()
 
-removeField = (buttonobj)->
+@removeField = (buttonobj)->
   buttonobj.parent().remove()
   renumberSubtitleFields()
 
@@ -41,18 +41,19 @@ renumberSubtitleFields = ->
 
 
 $(document).ready( ->
-  $("a.remove_subtitle_field").click((e)->
-    e.preventDefault()
-    removeField $(this)
-  )
-
-  $("a#add_subtitle_field").click((e)->
-    e.preventDefault() 
-    $("a#remove_field_id_#{number}").click((event)-> 
-      event.preventDefault()
+  if $("a.remove_subtitle_field").length > 0
+    $("a.remove_subtitle_field").click((e)->
+      e.preventDefault()
       removeField $(this)
     )
-    number = $('div.subtitlefields').length
-    duplicate($('div.subtitlefields#0'), number)
-  )
+  if $("a#add_subtitle_field").length > 0
+    $("a#add_subtitle_field").click((e)->
+      e.preventDefault() 
+      $("a#remove_field_id_#{number}").click((event)-> 
+        event.preventDefault()
+        removeField $(this)
+      )
+      number = $('div.subtitlefields').length
+      duplicate($('div.subtitlefields#0'), number)
+    )
 )
