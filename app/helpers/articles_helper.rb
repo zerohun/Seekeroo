@@ -2,7 +2,6 @@ module ArticlesHelper
 
   def iframe_for_upload(url, file_input_id, form_id)
     generated_html = ""
-    generated_html += include_javascripts :image_upload
     onloadeventcode = on_document_ready(
       "\ncreateUploadIframe('upload_iframe', 'upload_iframe',\n" +
       "'#{url}', '#{file_input_id}', '#{form_id}', 'fileupload');")
@@ -15,7 +14,6 @@ module ArticlesHelper
   def image_preview(target, image_model_name)
     previewimgid = "#{model_name_of(target)}_#{image_model_name.to_s}_id"
     generated_html =""
-    generated_html += include_javascripts :image_preview
     onload_code = on_document_ready(
      "\ncreateResponder('previewimg', '#{previewimgid}');"
     );

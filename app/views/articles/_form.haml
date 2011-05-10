@@ -1,4 +1,3 @@
-= include_javascripts :subtitle_field
 = form_for(@article) do |f|
   - if @article.errors.any?
     #error_explanation
@@ -8,6 +7,7 @@
       %ul
         - @article.errors.full_messages.each do |msg|
           %li= msg
+      %button{:type => "button", :"data-forFileUploadIframe"}
   = iframe_for_upload(new_image_path, "image_image", "new_image")
   = image_preview(@article, :image)
   #tagbox
@@ -20,3 +20,5 @@
 
   .actions
     = f.submit
+
+  %iframe{:src => "../images/new",:"data-IframeForUpload" => "true"}

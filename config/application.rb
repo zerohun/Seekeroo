@@ -43,6 +43,11 @@ module Fingeroo
       g.test_framework :rspec
     end
 
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+
+    # Enable IdentityMap for Active Record, to disable set to false or remove the line bel
+    config.active_record.identity_map = true
+
+    # Enable the asset pipline
+    config.assets.enabled = true
   end
 end

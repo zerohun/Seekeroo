@@ -1,12 +1,11 @@
-= include_javascripts :tagbox
-= include_javascripts :subtitle_field
 %p#notice= notice
 
 #image_view
   %canvas{:id => "image_viewer",
           :width => @article.image.image.width("pc"),
           :height => @article.image.image.height("pc"),
-          :"data-imgsrc" => size_for_pc_image_path(@article.image)}
+          :"data-imgsrc" => size_for_pc_image_path(@article.image),
+          :"data-taggable" => "true"}
 
   -@article.tagboxes.each_with_index do |tagbox, index|
     %tagbox{:id => "#{tagbox.id}", :"data-left" => "#{tagbox.left}",
