@@ -33,9 +33,11 @@ class @Tagbox
       temp = sy
       sy = ey
       ey = temp
+
+    cx = (sx + ex)/2
+    cy = (sy + ey)/2
     justbox = new Tagbox(sx, sy, ex, ey)
-    console.log "sx:#{sx} sy:#{sy} ex:#{ex} ey:#{ey}"
-    justbox.contain(@sx, @sy) || justbox.contain(@sx, @ey) || justbox.contain(@ex, @sy) || justbox.contain(@ex, @ey)
+    justbox.contain(@sx, @sy) || justbox.contain(@sx, @ey) || justbox.contain(@ex, @sy) || justbox.contain(@ex, @ey) || @contain(cx,cy)
 
 
   getID: ->

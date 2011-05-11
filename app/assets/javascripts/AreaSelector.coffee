@@ -1,6 +1,6 @@
 class @AreaSelector
 
-  constructor: (context, canvasWidth, canvasHeight, background, tagboxManager)->
+  constructor: (context, canvasWidth, canvasHeight, background)->
     @context = context
     @background = background
     @sx = 0
@@ -11,18 +11,14 @@ class @AreaSelector
     @lineWidth = 5
     @canvasWidth = canvasWidth
     @canvasHeight = canvasHeight
-    @tagboxManager = tagboxManager
   
   setBox: (sx, sy, ex, ey)->
     @sx = sx
     @sy = sy
     @ex = ex
     @ey = ey
-    if @firstdrawing == false
-      @eraseBox()
 
     @context.strokeRect(sx, sy, ex - sx, ey - sy)
-    @firstdrawing = false
 
   restoreBackground: (x, y, width, height)->
     @context.fillStyle = "red"
@@ -33,11 +29,12 @@ class @AreaSelector
     ###
                       
 
+    ###
   eraseBox: ->
 
     @context.drawImage(@background, 0, 0)
     @tagboxManager.drawAll()
-    ###
+
 
     boxWidth = @ex - @sy
     boxHeight = @ey - @sy

@@ -31,7 +31,6 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
 
     tagboxmanager = new TagboxManager(context, width, height, bgimage)
     tagboxmanager.loadTagboxesFromHtml()
-    tagboxcreator = new TagboxCreator(context, width, height, bgimage, tagboxmanager)
 
     bgimage.onload = ->
       context.drawImage(bgimage, 0, 0)
@@ -40,12 +39,14 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
 
     $(startTaggingLink).click((event)->
       event.preventDefault()
-      tagboxcreator.activate()
+      tagboxmanager.startDrawingMode()
     )
     $(endTaggingLink).click((event)->
       event.preventDefault()
-      tagboxcreator.deactivate()
+      tagboxmanager.finishDrawingMode()
       tagboxmanager.refresh()
+      $("div#tagbox_form").html("")
+
     )
     ismousedown = false
     startX = 0
@@ -53,13 +54,13 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     endX = 0
     endY = 0
     $(dataCanvas).click((event)->
-      if tagboxcreator.isActivated() == false
+      if tagboxmanager.isDrawingMode() == false
         tagbox = tagboxmanager.getClickedTagbox(event.pageX,
                                           event.pageY)
         tagbox.printSubtitles(subtitle_view, page_view)
 
     ).mousedown((event)->
-      if tagboxmanager.getClickedTagbox(event.pageX, event.pageY).getID() == tagboxmanager.getBackgroundTagbox().getID()
+      if tagboxmanager.contain(event.pageX, event.pageY) == false
         ismousedown = true
         startX = event.pageX
         startY = event.pageY
@@ -67,21 +68,22 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     ).mouseup((event)->
       ismousedown = false
 
-      if tagboxcreator.isActivated() == true
+      if tagboxmanager.isDrawingMode() == true
         requestNewTagboxForm(startX, startY, endX, endY)
     ).mousemove((event)->
       if ismousedown
         endX = event.pageX
         endY = event.pageY
-        if tagboxmanager.getClickedTagbox(endX, endY).getID() == tagboxmanager.getBackgroundTagbox().getID() && !(tagboxmanager.isLayered(startX, startY, endX, endY))
+        if tagboxmanager.isLayered(startX, startY, endX, endY) == false and tagboxmanager.contain(endX, endY) == false
 
-          tagboxcreator.setSelectBox(startX,
+
+          tagboxmanager.setSelectBox(startX,
                                      startY,
                                      endX,
                                      endY)
     ).mouseout((event)->
 
-      if tagboxcreator.isActivated && ismousedown
+      if tagboxmanager.isDrawingMode && ismousedown
         requestNewTagboxForm(startX, startY, endX, endY)
 
       ismousedown = false

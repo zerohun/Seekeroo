@@ -5,7 +5,40 @@ class @TagboxManager
     @height = height
     @bgimage = bgimage
     @tagboxlist = []
-    @isactivated = false
+    @drawingmode = false
+    @areaSelector = new AreaSelector(@context, 
+                                    width, 
+                                    height,
+                                    bgimage)
+
+  startDrawingMode: ->
+    @drawingmode = true
+
+  finishDrawingMode: ->
+    @drawingmode = false
+
+  isDrawingMode: ->
+    @drawingmode
+
+  setSelectBox: (sx, sy, ex, ey)->
+    if @drawingmode
+      @refresh()
+      if sx > ex
+        temp = sx
+        sx = ex
+        ex = temp
+      if sy > ey
+        temp = sy
+        sy = ey
+        ey = temp
+
+      @areaSelector.setBox(sx, sy, ex, ey)
+
+
+  contain: (x, y)->
+   @getClickedTagbox(x, y).getID() != @getBackgroundTagbox().getID() 
+
+
 
   addTagbox: (tagbox)->
     @tagboxlist.push tagbox
@@ -18,8 +51,6 @@ class @TagboxManager
       if listed.getID() == tagbox.getID()
         @tagboxlist.splice(count, 1)
       count++
-
-
     refresh()
 
 
@@ -56,16 +87,17 @@ class @TagboxManager
       if tagbox.contain(x, y) == true
         if count > 0
           return tagbox
-        else 
-          count++
+        count++
     return @tagboxlist[0]
 
   getBackgroundTagbox: ->
     return @tagboxlist[0]
 
   isLayered: (sx, sy, ex, ey)->
+    index = 0
     for tagbox in @tagboxlist
-      if tagbox.isLayeredWith(sx, sy, ex ,ey)
+      if tagbox.isLayeredWith(sx, sy, ex ,ey) == true and index > 0
         return true
+      index++
 
     return false

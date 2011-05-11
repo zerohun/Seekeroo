@@ -27,7 +27,7 @@ require 'cucumber/rails'
 # prefer to use XPath just remove this line and adjust any selectors in your
 # steps to use the XPath syntax.
 Capybara.default_selector = :css
-Capybara.default_wait_time = 10
+Capybara.default_wait_time = 100
 
 
 
