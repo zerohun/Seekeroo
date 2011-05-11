@@ -7,8 +7,9 @@
       %ul
         - @article.errors.full_messages.each do |msg|
           %li= msg
-      %button{:type => "button", :"data-forFileUploadIframe"}
-  = iframe_for_upload(new_image_path, "image_image", "new_image")
+
+  %button{:type => "button", :"data-select_file" => "true"}
+    Select File
   = image_preview(@article, :image)
   #tagbox
     =render :file => "tagboxes/_field",
@@ -21,4 +22,4 @@
   .actions
     = f.submit
 
-  %iframe{:src => "../images/new",:"data-IframeForUpload" => "true"}
+  %iframe{:src => Rails.root + "/images/new",:"data-iframe_for_upload" => "true"}

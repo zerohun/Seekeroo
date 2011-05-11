@@ -1,19 +1,24 @@
 class @TagboxCreator
-  constructor: (context, canvasWidth, canvasHeight, bgimage)->
+  constructor: (context, canvasWidth, canvasHeight, bgimage, tagboxManager)->
     @context = context
     @isactivated = false
     @areaSelector = new AreaSelector(@context, 
                                     canvasWidth, 
                                     canvasHeight,
-                                    bgimage)
+                                    bgimage,
+                                    tagboxManager)
 
 
   setSelectBox: (sx, sy, ex, ey)->
     if @isactivated
       if sx > ex
-        @swap(sx, ex)
+        temp = sx
+        sx = ex
+        ex = temp
       if sy > ey
-        @swap(sy, ey)
+        temp = sy
+        sy = ey
+        ey = temp
       @areaSelector.setBox(sx, sy, ex, ey)
 
   createTagboxForm: (target)->
@@ -28,7 +33,3 @@ class @TagboxCreator
   isActivated: ->
     @isactivated
 
-  swap: (a, b)->
-    temp = a
-    a = b
-    b = temp

@@ -40,7 +40,7 @@ renumberSubtitleFields = ->
 
 
 
-$(document).ready( ->
+@manageSubtitleFileds = ->
   if $("a.remove_subtitle_field").length > 0
     $("a.remove_subtitle_field").click((e)->
       e.preventDefault()
@@ -56,4 +56,3 @@ $(document).ready( ->
       number = $('div.subtitlefields').length
       duplicate($('div.subtitlefields#0'), number)
     )
-)

@@ -18,72 +18,71 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
 
 @initializeTaggingPanel = ->
 
-  dataCanvasList = getDataElementList("canvas", "taggable", true)
-  if dataCanvasList.length > 0
-    for canvas in dataCanvasList
-      context = canvas.getContext "2d"
-      width = parseFloat($(canvas).data("width"))
-      height = parseFloat($(canvas).data("height"))
-      bgimage = new Image()
-      subtitle_view = $("div#subtitle_view")
-      page_view = $("div#page_view")
+  dataCanvas = getDataElementList("canvas", "taggable", true)
+  startTaggingLink = getDataElementList("a", "start_tagging", true)
+  endTaggingLink = getDataElementList("a", "done_tagging", true)
+  if dataCanvas.length == 1 and startTaggingLink.length == 1 and endTaggingLink.length == 1 
+    context = dataCanvas[0].getContext "2d"
+    width = parseFloat($(dataCanvas).data("width"))
+    height = parseFloat($(dataCanvas).data("height"))
+    bgimage = new Image()
+    subtitle_view = $("div#subtitle_view")
+    page_view = $("div#page_view")
 
-      tagboxmanager = new TagboxManager(context, width, height, bgimage)
-      tagboxmanager.loadTagboxesFromHtml()
-      tagboxcreator = new TagboxCreator(context, width, height, bgimage)
+    tagboxmanager = new TagboxManager(context, width, height, bgimage)
+    tagboxmanager.loadTagboxesFromHtml()
+    tagboxcreator = new TagboxCreator(context, width, height, bgimage, tagboxmanager)
 
-      bgimage.onload = ->
-        context.drawImage(bgimage, 0, 0)
-        tagboxmanager.drawAll()
-      bgimage.src = $(canvas).data("imgsrc")
+    bgimage.onload = ->
+      context.drawImage(bgimage, 0, 0)
+      tagboxmanager.drawAll()
+    bgimage.src = $(dataCanvas).data("imgsrc")
 
-      $("a#start_tagging").click((event)->
-        event.preventDefault()
-        tagboxcreator.activate()
-
-      )
-      $("a#done_tagging").click((event)->
-        event.preventDefault()
-        tagboxcreator.deactivate()
-      )
-
-      ismousedown = false
-      startX = 0
-      startY = 0
-      endX = 0
-      endY = 0
-      $(canvas).click((event)->
-        if tagboxcreator.isActivated() == false
-          tagbox = tagboxmanager.getClickedTagbox(event.pageX,
-                                            event.pageY)
+    $(startTaggingLink).click((event)->
+      event.preventDefault()
+      tagboxcreator.activate()
+    )
+    $(endTaggingLink).click((event)->
+      event.preventDefault()
+      tagboxcreator.deactivate()
+      tagboxmanager.refresh()
+    )
+    ismousedown = false
+    startX = 0
+    startY = 0
+    endX = 0
+    endY = 0
+    $(dataCanvas).click((event)->
+      if tagboxcreator.isActivated() == false
+        tagbox = tagboxmanager.getClickedTagbox(event.pageX,
+                                          event.pageY)
         tagbox.printSubtitles(subtitle_view, page_view)
 
-
-      ).mousedown((event)->
+    ).mousedown((event)->
+      if tagboxmanager.getClickedTagbox(event.pageX, event.pageY).getID() == tagboxmanager.getBackgroundTagbox().getID()
         ismousedown = true
         startX = event.pageX
         startY = event.pageY
 
-    
+    ).mouseup((event)->
+      ismousedown = false
 
-      ).mouseup((event)->
-        ismousedown = false
+      if tagboxcreator.isActivated() == true
+        requestNewTagboxForm(startX, startY, endX, endY)
+    ).mousemove((event)->
+      if ismousedown
+        endX = event.pageX
+        endY = event.pageY
+        if tagboxmanager.getClickedTagbox(endX, endY).getID() == tagboxmanager.getBackgroundTagbox().getID() && !(tagboxmanager.isLayered(startX, startY, endX, endY))
 
-        if tagboxcreator.isActivated() == true
-          requestNewTagboxForm(startX, startY, endX, endY)
-      ).mousemove((event)->
-        if ismousedown
-          endX = event.pageX
-          endY = event.pageY
-  
           tagboxcreator.setSelectBox(startX,
                                      startY,
                                      endX,
                                      endY)
-      ).mouseout((event)->
+    ).mouseout((event)->
 
-        if tagboxcreator.isActivated && ismousedown
-          requestNewTagboxForm(startX, startY, endX, endY)
+      if tagboxcreator.isActivated && ismousedown
+        requestNewTagboxForm(startX, startY, endX, endY)
 
-        ismousedown = false
-      )
+      ismousedown = false
+    )

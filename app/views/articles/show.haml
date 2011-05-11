@@ -17,8 +17,10 @@
         -tagbox.subtitles.each_with_index do |subtitle, index|
           %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
-%a{:id => "start_tagging"}
-  tag
+%a{:"data-start_tagging" => "true"}
+  Start Tagging
+%a{:"data-done_tagging" => "true"}
+  Done Tagging
 .subtitle
   #subtitle_view
     %p

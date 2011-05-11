@@ -1,6 +1,6 @@
 class @AreaSelector
 
-  constructor: (context, canvasWidth, canvasHeight, background)->
+  constructor: (context, canvasWidth, canvasHeight, background, tagboxManager)->
     @context = context
     @background = background
     @sx = 0
@@ -11,6 +11,7 @@ class @AreaSelector
     @lineWidth = 5
     @canvasWidth = canvasWidth
     @canvasHeight = canvasHeight
+    @tagboxManager = tagboxManager
   
   setBox: (sx, sy, ex, ey)->
     @sx = sx
@@ -35,6 +36,7 @@ class @AreaSelector
   eraseBox: ->
 
     @context.drawImage(@background, 0, 0)
+    @tagboxManager.drawAll()
     ###
 
     boxWidth = @ex - @sy

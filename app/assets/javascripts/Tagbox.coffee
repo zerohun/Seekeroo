@@ -20,8 +20,23 @@ class @Tagbox
   isDraw: ->
     @is_draw
 
-  isInside: (x, y)->
+  contain: (x, y)->
     x >= @sx && x <= @ex && y >= @sy && y <= @ey
+
+  isLayeredWith: (sx, sy, ex, ey)->
+    if sx > ex
+      temp = sx
+      sx = ex
+      ex = temp
+
+    if sy > ey
+      temp = sy
+      sy = ey
+      ey = temp
+    justbox = new Tagbox(sx, sy, ex, ey)
+    console.log "sx:#{sx} sy:#{sy} ex:#{ex} ey:#{ey}"
+    justbox.contain(@sx, @sy) || justbox.contain(@sx, @ey) || justbox.contain(@ex, @sy) || justbox.contain(@ex, @ey)
+
 
   getID: ->
     @id

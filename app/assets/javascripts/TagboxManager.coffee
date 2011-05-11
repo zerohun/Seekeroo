@@ -25,8 +25,8 @@ class @TagboxManager
 
   refresh: ->
     @context.clearRect(0, 0, @width, @height)
-    @context.drawImage(@bgimage)
-    drawAll()
+    @context.drawImage(@bgimage,0 ,0)
+    @drawAll()
 
 
   drawAll: ->
@@ -53,10 +53,19 @@ class @TagboxManager
   getClickedTagbox: (x, y)->
     count = 0
     for tagbox in @tagboxlist
-      if tagbox.isInside(x, y) == true
+      if tagbox.contain(x, y) == true
         if count > 0
           return tagbox
         else 
           count++
     return @tagboxlist[0]
 
+  getBackgroundTagbox: ->
+    return @tagboxlist[0]
+
+  isLayered: (sx, sy, ex, ey)->
+    for tagbox in @tagboxlist
+      if tagbox.isLayeredWith(sx, sy, ex ,ey)
+        return true
+
+    return false
