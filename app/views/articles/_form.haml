@@ -12,8 +12,7 @@
     Select File
   = image_preview(@article, :image)
   #tagbox
-    =render :file => "tagboxes/_field",
-            :object => @article.tagboxes.first
+    =render :partial => "tagboxes/field"
 
 
   =link_to "Add Subtitle", "", html_option = {:id => "add_subtitle_field"}
@@ -22,4 +21,4 @@
   .actions
     = f.submit
 
-  %iframe{:src => Rails.root + "/images/new",:"data-iframe_for_upload" => "true"}
+  %iframe{:id => "forupload", :src => Rails.root + "/images/new",:"data-iframe_for_upload" => "true"}

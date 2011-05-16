@@ -43,12 +43,16 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 #   gem 'webrat'
 # end
 group :test, :development do
-  gem 'rspec-rails', '~> 2.4'
+  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
 end
 
 group :test do
-  gem 'cucumber-rails'
-  gem 'capybara'
+  gem 'cucumber-rails', :git => "git://github.com/cucumber/cucumber-rails.git"
+  gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
   gem 'email_spec'
   gem 'launchy'
   gem 'database_cleaner'

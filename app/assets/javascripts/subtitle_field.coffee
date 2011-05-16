@@ -1,12 +1,12 @@
 changeNameNumber = (target, index)->
   beforetext = target.attr("name")
-  newtext = beforetext.replace("[subtitles_attributes][0]", 
+  newtext = beforetext.replace(/\[subtitles_attributes\]\[[0-9]\]/i, 
                                "[subtitles_attributes][#{index}]")
   target.attr("name", newtext)
 
 changeIDNumber = (target, index, attribute)->
   beforetext = target.attr(attribute)
-  newtext = beforetext.replace("subtitles_attributes_0", 
+  newtext = beforetext.replace(/subtitles_attributes_[0-9]/i, 
                                "subtitles_attributes_#{index}")
   target.attr(attribute, newtext)
 
