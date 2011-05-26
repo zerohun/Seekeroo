@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.beta1'
+gem 'rails', '3.1.0.rc1'
 
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -44,7 +44,7 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # end
 group :test, :development do
   gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
-  gem "rspec",              :git => "git://github.com/rspec/rspec.git"
+  gem "rspec"#,              :git => "git://github.com/rspec/rspec.git"
   gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
   gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
   gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
@@ -55,6 +55,6 @@ group :test do
   gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
   gem 'email_spec'
   gem 'launchy'
-  gem 'database_cleaner'
+  gem 'database_cleaner', :git => "git://github.com/bmabey/database_cleaner.git"
   gem 'factory_girl_rails'
 end

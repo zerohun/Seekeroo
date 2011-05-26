@@ -16,6 +16,7 @@ Feature: Creating articles
     And I fill in "Subtitle 2" with "We were wating pho in the Vietnamese restaurant"
     And I press "Create Article"
     Then I should see "Article was successfully created."
+    #Then I should see the canvas that showing the image file "sarah.jpg"
     When I click "canvas"
     Then I should see "She is my beautiful girl friend Sarah"
     When I click "canvas"
