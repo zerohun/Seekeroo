@@ -13,6 +13,7 @@ gem 'mysql'
 gem 'rmagick'
 gem 'paperclip'
 gem 'haml-rails'
+gem 'geocoder'
 
 # Asset template engines
 gem 'sass'
