@@ -5,4 +5,6 @@ $(document).ready(function(event){
   initializeTaggingPanel();
   createUploadIframe();
   manageSubtitleFileds();
+  inputGeolocation();
+  showGeolocation();
 });
