@@ -45,6 +45,20 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     respond_to do |format|
       if @article.save
+        #treat for the bug of 3.1.0.rc1#####
+        count = 0
+        realSize = @article.tagboxes.first.subtitles.length / 2
+        if @article.tagboxes.first.subtitles.first.text == @article.tagboxes.first.subtitles[realSize].text
+          @article.tagboxes.first.subtitles.each do |subtitle|
+            if count >= realSize
+              subtitle.destroy
+            end
+            count = count + 1
+          end
+        end
+        ####################################
+        #should be deleted when the bug is fixed
+
         image = Image.find_by_id(@article.image_id)
         image.state = "uploaded"
         image.save
