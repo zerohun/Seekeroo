@@ -1,2 +1,20 @@
-html += "<p> it's submiited! </p>"
+html += "<p> it's submiited! </p>";
 $("div#tagbox_form").html(html);
+
+sx = <%= @tagbox.left %>
+sy = <%= @tagbox.top %>
+ex = <%= @tagbox.left + @tagbox.width %>
+ey = <%= @tagbox.top + @tagbox.height %>
+
+alert("before subtitle");
+tag_subtitles = new Subtitles()
+alert("created subtitle");
+<% @tagbox.subtitles.each do |subtitle| %>
+  tag_subtitles.addText("<%= subtitle.text %>")
+<% end %>
+
+alert("after subtitle");
+tagbox = new Tagbox(sx, sy, ex, ey, tag_subtitles, "<%= @tagbox.id %>");
+$("div#image_view").append(tagbox.toHtml());
+alert("its done");
+

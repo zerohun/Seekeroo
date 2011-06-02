@@ -46,5 +46,11 @@ class @Tagbox
   printSubtitles: (subtitle_view, page_view)->
     @subtitles.print("next", subtitle_view, page_view)
 
+  toHtml: ->
+    "<tagbox  data-width='#{@ex - @sx}' data-height='#{@ey - @sy}' data-left='#{@sx}' data-top='#{@sy}' id='#{@id}' >
+      <div id='subtitles'>
+      " + @subtitles.toHtml() + "
+      </div>
+    </tagbox>"
 
 

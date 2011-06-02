@@ -10,6 +10,10 @@ class @TagboxManager
                                     width, 
                                     height,
                                     bgimage)
+  resetList: ->
+    for tagbox in @tagboxlist
+      @tagboxlist.pop()
+    @tagboxlist = []
 
   startDrawingMode: ->
     @drawingmode = true
@@ -55,6 +59,8 @@ class @TagboxManager
 
 
   refresh: ->
+    @resetList()
+    @loadTagboxesFromHtml()
     @context.clearRect(0, 0, @width, @height)
     @context.drawImage(@bgimage,0 ,0)
     @drawAll()

@@ -48,3 +48,11 @@ class @Subtitles
       subtitle_view.text(@next())
       page_view.text(@pagecount())
 
+  toHtml: ->
+    html = ""
+    count = 0
+    for text in @textlist
+      html += "<subtitle data-text='#{text}' id=#{count}></subtitle>"
+      count = count + 1
+    html
+
