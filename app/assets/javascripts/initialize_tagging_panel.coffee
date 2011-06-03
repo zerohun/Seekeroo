@@ -1,6 +1,15 @@
 requestNewTagboxForm = (sx, sy, ex ,ey)->
-  left = sx
-  top = sy
+
+  if sx > ex
+    left = ex
+  else
+    left = sx
+
+  if sy > ey
+    top = ey
+  else
+    top = sy
+
   width = ex - sx
   height = ey - sy
   if width < 0 
