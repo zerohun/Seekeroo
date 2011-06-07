@@ -9,6 +9,15 @@ class @Tagbox
     @is_draw = false
     
 
+
+  move: (left, top)->
+    @sx = @sx + left
+    @ex = @ex + left
+    @sy = @sy + top
+    @ey = @ey + top
+
+
+
   draw: (context)->
     width = @ex - @sx
     height = @ey - @sy

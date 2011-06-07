@@ -2,8 +2,8 @@
 
 #image_view
   %canvas{:id => "image_viewer",
-          :width => @article.image.image.width("pc"),
-          :height => @article.image.image.height("pc"),
+          :width => 800,
+          :height => 600,
           :"data-imgsrc" => size_for_pc_image_path(@article.image),
           :"data-taggable" => "true"}
 

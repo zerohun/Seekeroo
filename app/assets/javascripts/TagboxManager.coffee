@@ -61,10 +61,17 @@ class @TagboxManager
   refresh: ->
     @resetList()
     @loadTagboxesFromHtml()
-    @context.clearRect(0, 0, @width, @height)
-    @context.drawImage(@bgimage,0 ,0)
+    @context.fillStyle = "reg(0,0,0)"
+    @context.fillRect(0, 0, @width, @height)
+    @left = (@width - @bgimage.width)/2
+    @top = (@height - @bgimage.height)/2
+    @moveAll(@left, @top)
+
+    @context.drawImage(@bgimage, @left, @top)
     @drawAll()
 
+  moveAll: (left, top)->
+    tagbox.move(left, top) for tagbox in @tagboxlist
 
   drawAll: ->
     tagbox.draw(@context) for tagbox in @tagboxlist
@@ -77,10 +84,10 @@ class @TagboxManager
       $(this).find("subtitle").each(->
         subtitles.addText($(this).data("text"))
       )
-      sx = $(this).data("left")
-      sy = $(this).data("top")
-      ex = (parseFloat(sx) + parseFloat($(this).data("width"))).toString()
-      ey = (parseFloat(sy) + parseFloat($(this).data("height"))).toString()
+      sx = parseFloat($(this).data("left"))
+      sy = parseFloat($(this).data("top"))
+      ex = sx + parseFloat($(this).data("width"))
+      ey = sy + parseFloat($(this).data("height"))
       id = $(this).attr("id")
       tagbox = new Tagbox(sx, sy, ex, ey, subtitles.deepCopy(),id)
       tagboxlist.push tagbox
@@ -107,3 +114,10 @@ class @TagboxManager
       index++
 
     return false
+
+  isInsideOfPicture: (left, top)->
+    sx = @left
+    ex = @left + @bgimage.width
+    sy = @top
+    ey = @top + @bgimage.height
+    left >= sx && left <= ex && top >= sy && top <= ey

@@ -32,8 +32,9 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
   endTaggingLink = getDataElementList("a", "done_tagging", true)
   if dataCanvas.length == 1 and startTaggingLink.length == 1 and endTaggingLink.length == 1 
     context = dataCanvas[0].getContext "2d"
-    width = parseFloat($(dataCanvas).data("width"))
-    height = parseFloat($(dataCanvas).data("height"))
+
+    width = parseFloat($(dataCanvas).attr("width"))
+    height = parseFloat($(dataCanvas).attr("height"))
     bgimage = new Image()
     subtitle_view = $("div#subtitle_view")
     page_view = $("div#page_view")
@@ -42,8 +43,8 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     tagboxmanager.loadTagboxesFromHtml()
 
     bgimage.onload = ->
-      context.drawImage(bgimage, 0, 0)
-      tagboxmanager.drawAll()
+      tagboxmanager.refresh()
+
     bgimage.src = $(dataCanvas).data("imgsrc")
 
     $(startTaggingLink).click((event)->
@@ -69,7 +70,7 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
         tagbox.printSubtitles(subtitle_view, page_view)
 
     ).mousedown((event)->
-      if tagboxmanager.contain(event.pageX, event.pageY) == false
+      if tagboxmanager.contain(event.pageX, event.pageY) == false and tagboxmanager.isInsideOfPicture(event.pageX, event.pageY)
         ismousedown = true
         startX = event.pageX
         startY = event.pageY
@@ -83,7 +84,7 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
       if ismousedown
         endX = event.pageX
         endY = event.pageY
-        if tagboxmanager.isLayered(startX, startY, endX, endY) == false and tagboxmanager.contain(endX, endY) == false
+        if tagboxmanager.isLayered(startX, startY, endX, endY) == false and tagboxmanager.contain(endX, endY) == false and tagboxmanager.isInsideOfPicture(endX, endY)
 
 
           tagboxmanager.setSelectBox(startX,
