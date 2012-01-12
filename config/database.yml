@@ -1,13 +1,13 @@
 defaults: &defaults
-  adapter: mysql
-  username: root
-  password: 13245a
-  host: localhost
+  adapter: sqlite3
+#  username: root
+#  password: 13245a
+#  host: localhost
 
 #mysql
 development:
   <<: *defaults
-  database: fingeroo_development
+  database: fingeroo_development.sqlite3
   pool: 5
   timeout: 20000
 
@@ -16,13 +16,13 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *defaults
-  database: fingeroo_test
+  database: fingeroo_test.sqlite3
   pool: 5
   timeout: 20000
 
 production:
   <<: *defaults
-  database: fingeroo_production
+  database: fingeroo_production.sqlite3
   pool: 5
   timeout: 20000
 

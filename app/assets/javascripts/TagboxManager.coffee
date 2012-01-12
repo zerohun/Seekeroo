@@ -71,7 +71,8 @@ class @TagboxManager
     @drawAll()
 
   moveAll: (left, top)->
-    tagbox.move(left, top) for tagbox in @tagboxlist
+    @tagboxlist[0].move(left,top)
+#    tagbox.move(left, top) for tagbox in @tagboxlist
 
   drawAll: ->
     tagbox.draw(@context) for tagbox in @tagboxlist
@@ -121,3 +122,11 @@ class @TagboxManager
     sy = @top
     ey = @top + @bgimage.height
     left >= sx && left <= ex && top >= sy && top <= ey
+
+  getLeft: ->
+    @left
+  getTop: ->
+    @top
+
+  setContext: (context)->
+    @context = context

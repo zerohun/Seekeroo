@@ -6,9 +6,10 @@ changeNameNumber = (target, index)->
 
 changeIDNumber = (target, index, attribute)->
   beforetext = target.attr(attribute)
-  newtext = beforetext.replace(/subtitles_attributes_[0-9]/i, 
-                               "subtitles_attributes_#{index}")
-  target.attr(attribute, newtext)
+  if beforetext
+    newtext = beforetext.replace(/subtitles_attributes_[0-9]/i, 
+                                 "subtitles_attributes_#{index}")
+    target.attr(attribute, newtext)
 
 @duplicate = (target, index)->
   cloned = target.clone(true)

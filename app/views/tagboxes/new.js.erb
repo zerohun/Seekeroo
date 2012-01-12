@@ -24,7 +24,7 @@ registerEvents = function()
 
 
 
-html = "<%= (render "tagboxes/form").gsub("\"", "'").gsub("\n", "") %>";
+html = "<%= (render "tagboxes/form").gsub("\"", "'").gsub("\n", "").html_safe %>";
 html += "<script type='text/javascript'>"
 html += "registerEvents()"
 html += "</script>"

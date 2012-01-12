@@ -65,9 +65,16 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     endY = 0
     $(dataCanvas).click((event)->
       if tagboxmanager.isDrawingMode() == false
+
+        tagboxmanager.drawAll()
+
         tagbox = tagboxmanager.getClickedTagbox(event.pageX,
                                           event.pageY)
-        tagbox.printSubtitles(subtitle_view, page_view)
+        tagbox.printSubtitles(subtitle_view, page_view, context)
+
+
+
+
 
     ).mousedown((event)->
       if tagboxmanager.contain(event.pageX, event.pageY) == false and tagboxmanager.isInsideOfPicture(event.pageX, event.pageY)
@@ -94,7 +101,7 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     ).mouseout((event)->
 
       if tagboxmanager.isDrawingMode && ismousedown
-        requestNewTagboxForm(startX, startY, endX, endY)
+        requestNewTagboxForm(startX , startY, endX, endY)
 
       ismousedown = false
     )

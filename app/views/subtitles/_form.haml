@@ -3,11 +3,11 @@
 =fields_for @article do |f|
   = f.fields_for :tagboxes do |tagbox|
     -if count == 0
+      - count = count + 1
       = tagbox.fields_for :subtitles do |subtitle|
         .subtitlefields{:id => 0}
           = subtitle.label :text, "Subtitle " + (number + 1).to_s
           - number = number + 1
           = subtitle.text_area(:text, :rows => 3)
           = link_to "remove", "/", html_option = {:id => "remove_field_id_#{number}", :class => "remove_subtitle_field"}
-      - count = count + 1
-
+    - break

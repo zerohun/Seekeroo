@@ -2,12 +2,14 @@
 = fields_for @article do |f|
   = f.fields_for :tagboxes do |tagbox|
     - if count == 0
+      - count = count + 1
       .fields
-        = tagbox.hidden_field :left
-        = tagbox.hidden_field :top
-        = tagbox.hidden_field :width
-        = tagbox.hidden_field :height
+        = tagbox.hidden_field(:left)
+        = tagbox.hidden_field(:top)
+        = tagbox.hidden_field(:width)
+        = tagbox.hidden_field(:height)
         #subtitles
           =render :partial => "subtitles/form"
-    - count = count + 1
+    - else
+      =""
 

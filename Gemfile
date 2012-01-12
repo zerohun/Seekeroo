@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc1'
+gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 #gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -8,8 +8,8 @@ gem 'rails', '3.1.0.rc1'
 gem 'sqlite3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
-gem 'mysql2'
-gem 'mysql'
+#gem 'mysql2'
+#gem 'mysql'
 gem 'rmagick'
 gem 'paperclip'
 gem 'haml-rails'
@@ -20,6 +20,9 @@ gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
+
+gem 'omniauth-twitter'
+gem 'omniauth-identity'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -44,18 +47,18 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 #   gem 'webrat'
 # end
 group :test, :development do
-  gem "rspec-rails",        :git => "git://github.com/rspec/rspec-rails.git"
+  gem "rspec-rails"
   gem "rspec"#,              :git => "git://github.com/rspec/rspec.git"
-  gem "rspec-core",         :git => "git://github.com/rspec/rspec-core.git"
-  gem "rspec-expectations", :git => "git://github.com/rspec/rspec-expectations.git"
-  gem "rspec-mocks",        :git => "git://github.com/rspec/rspec-mocks.git"
+  gem "rspec-core"#,         :git => "git://github.com/rspec/rspec-core.git"
+  gem "rspec-expectations"#, :git => "git://github.com/rspec/rspec-expectations.git"
+  gem "rspec-mocks"#,        :git => "git://github.com/rspec/rspec-mocks.git"
 end
 
 group :test do
-  gem 'cucumber-rails', :git => "git://github.com/cucumber/cucumber-rails.git"
-  gem 'capybara', :git => "git://github.com/jnicklas/capybara.git"
+  gem 'cucumber-rails'#, :git => "git://github.com/cucumber/cucumber-rails.git"
+  gem 'capybara'#, :git => "git://github.com/jnicklas/capybara.git"
   gem 'email_spec'
   gem 'launchy'
-  gem 'database_cleaner', :git => "git://github.com/bmabey/database_cleaner.git"
+  gem 'database_cleaner'#, :git => "git://github.com/bmabey/database_cleaner.git"
   gem 'factory_girl_rails'
 end

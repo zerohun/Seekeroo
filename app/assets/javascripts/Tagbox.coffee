@@ -30,7 +30,7 @@ class @Tagbox
     @is_draw
 
   contain: (x, y)->
-    x >= @sx && x <= @ex && y >= @sy && y <= @ey
+    x > @sx + 10 && x < @ex + 10 && y > @sy + 10 && y < @ey + 10
 
   isLayeredWith: (sx, sy, ex, ey)->
     if sx > ex
@@ -52,8 +52,14 @@ class @Tagbox
   getID: ->
     @id
 
-  printSubtitles: (subtitle_view, page_view)->
+  printSubtitles: (subtitle_view, page_view, context)->
+    width = @ex - @sx
+    height = @ey - @sy
+    context.strokeStyle = "blue"
+    context.lineWidth = 5
+    context.strokeRect(@sx, @sy, width, height)
     @subtitles.print("next", subtitle_view, page_view)
+
 
   toHtml: ->
     "<tagbox  data-width='#{@ex - @sx}' data-height='#{@ey - @sy}' data-left='#{@sx}' data-top='#{@sy}' id='#{@id}' >
