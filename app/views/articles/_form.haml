@@ -10,6 +10,7 @@
 
   %button{:type => "button", :"data-select_file" => "true"}
     Select image File
+  #image_loading
   = image_preview(@article, :image)
   #tagbox
     =render :partial => "tagboxes/field"

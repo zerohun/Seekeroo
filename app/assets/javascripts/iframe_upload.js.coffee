@@ -9,6 +9,7 @@
       )
       $(selectFileButton).unbind('click').click((event)->
         $(iframe).contents().find("#image_image").trigger('click')
+        $("#image_loading").html("<img src='/loading.gif'>")
       )
     )
 
