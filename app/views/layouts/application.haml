@@ -1,10 +1,29 @@
 !!!
 %html
   %head
-    %title Fingeroo
+    %title Vieweroo
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = javascript_include_tag "http://maps.google.com/maps/api/js?sensor=true"
     = csrf_meta_tags
   %body
-    = yield
+    #container
+      #header
+        #logo
+          %a{:href => '/'}
+            %img{:src=> "/cangaroo.png"}
+        #title
+          %a{:href => '/', :id => 'title'}
+            Seekeroo
+        #explain
+          Taggable image web service
+
+        #login_status
+          -if current_user
+            ="Welcome #{ current_user.name}"
+            = link_to "Sign Out", signout_path
+          -else
+            %img{:src => "/twitter-icon.png"}
+            = link_to "Sign in with twitter", "/auth/twitter" 
+      #content
+        = yield

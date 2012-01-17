@@ -9,7 +9,7 @@
           %li= msg
 
   %button{:type => "button", :"data-select_file" => "true"}
-    Select File
+    Select image File
   = image_preview(@article, :image)
   #tagbox
     =render :partial => "tagboxes/field"
@@ -17,16 +17,16 @@
   =link_to "Add Subtitle", "", html_option = {:id => "add_subtitle_field"}
 
 
-  #editable_map_canvas{:style => "width:200px;height:200px"}
+  .guide{:id => "map_guide"}
+    Select location by clicking map
+  #editable_map_canvas{:style => "width:400px;height:400px"}
   #geolocation_fields
     %input{:id => "article_latitude", :name => "article[latitude]", :type => "hidden"}
     %input{:id => "article_longitude", :name => "article[longitude]", :type => "hidden"}
-    
 
 
-
-
+  %iframe{:id => "forupload", :src => Rails.root + "/images/new",:"data-iframe_for_upload" => "true"}
   .actions
     = f.submit
 
-  %iframe{:id => "forupload", :src => Rails.root + "/images/new",:"data-iframe_for_upload" => "true"}
+

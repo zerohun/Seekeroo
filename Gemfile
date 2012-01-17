@@ -24,6 +24,8 @@ gem 'jquery-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-identity'
 
+gem 'will_paginate', '> 3.0'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -38,7 +40,7 @@ gem 'ruby-debug19', :require => 'ruby-debug'
 # gem 'bj'
 # gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
+ gem 'aws-s3'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

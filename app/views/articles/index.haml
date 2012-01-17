@@ -1,11 +1,24 @@
-%h1 Listing articles
-%table
-  %tr
-    %th
-      - index = 0
-      - @articles.each do |article|
+- table_row_size = 5
+- index = 0
+= link_to 'New Article', new_article_path, {:id => "new_article_button"}
+%table{:id => 'article_list'}
+  - (@articles.size / table_row_size).times do |number|
+
+    - start_index = table_row_size * number
+    - end_index = table_row_size * (number + 1) - 1
+    %tr
+      - @articles[start_index..end_index].each do |article|
         - index = index + 1
-        %tr
-          %td= link_to tag("img", {:src => size_for_thumb_image_path(article.image)}), article, :id => index
+        %td= link_to tag("img", {:src => size_for_thumb_image_path(article.image)}), article, :id => index
+
+  - if @articles.size % table_row_size > 0
+    - start_index = @articles.size - (@articles.size % table_row_size)
+    - end_index = @articles.size
+    %tr
+      - @articles[start_index..end_index].each do |article|
+        - index = index + 1
+        %td= link_to tag("img", {:src => size_for_thumb_image_path(article.image)}), article, :id => index
+        
+= will_paginate @articles
 %br/
-= link_to 'New Article', new_article_path
+

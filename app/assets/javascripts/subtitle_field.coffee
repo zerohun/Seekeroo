@@ -20,10 +20,18 @@ changeIDNumber = (target, index, attribute)->
   cloned.find("label").text("Subtitle #{index + 1}")
   cloned.attr("id",index)
   cloned.appendTo target.parent()
+  target.parent().find("##{index}").hide()
+  target.parent().find("##{index}").slideDown()
+
+
 
 @removeField = (buttonobj)->
-  buttonobj.parent().remove()
-  renumberSubtitleFields()
+  buttonobj.parent().slideUp('slow', ->
+    buttonobj.parent().remove()
+    renumberSubtitleFields()
+  )
+
+
 
 renumberSubtitleFields = ->
   $("div.subtitlefields").each((index)->
@@ -44,8 +52,10 @@ renumberSubtitleFields = ->
 @manageSubtitleFileds = ->
   if $("a.remove_subtitle_field").length > 0
     $("a.remove_subtitle_field").click((e)->
+      if  $("a.remove_subtitle_field").length > 1
+        removeField $(this)
       e.preventDefault()
-      removeField $(this)
+
     )
   if $("a#add_subtitle_field").length > 0
     $("a#add_subtitle_field").click((e)->

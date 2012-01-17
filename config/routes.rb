@@ -15,6 +15,8 @@ Fingeroo::Application.routes.draw do
       get 'size_for_thumb'
     end
   end
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
 
 
   # The priority is based upon order of creation:

@@ -46,18 +46,35 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
       tagboxmanager.refresh()
 
     bgimage.src = $(dataCanvas).data("imgsrc")
+    
+    $(endTaggingLink).hide()
 
     $(startTaggingLink).click((event)->
       event.preventDefault()
       tagboxmanager.startDrawingMode()
+      $('body').css('cursor', 'crosshair')
+      $(this).hide()
+      $(endTaggingLink).show()
+      $("div#tagbox_guide").fadeIn('slow',->
+        $(this).html("Draw tagbox by dragging")
+      )
+
+      $("body").scrollTo($("div#tagbox_guide"),800)
+
+
     )
     $(endTaggingLink).click((event)->
       event.preventDefault()
       tagboxmanager.finishDrawingMode()
       tagboxmanager.refresh()
       $("div#tagbox_form").html("")
+      $('body').css('cursor', 'default')
+      $(this).hide()
+      $(startTaggingLink).show()
+      $("div#tagbox_guide").html("")
 
     )
+    $("#page_view").hide()
     ismousedown = false
     startX = 0
     startY = 0
@@ -68,8 +85,8 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
 
         tagboxmanager.drawAll()
 
-        tagbox = tagboxmanager.getClickedTagbox(event.pageX,
-                                          event.pageY)
+        tagbox = tagboxmanager.getClickedTagbox(event.pageX - 150,
+                                          event.pageY - 150)
         tagbox.printSubtitles(subtitle_view, page_view, context)
 
 
@@ -77,21 +94,25 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
 
 
     ).mousedown((event)->
-      if tagboxmanager.contain(event.pageX, event.pageY) == false and tagboxmanager.isInsideOfPicture(event.pageX, event.pageY)
+      if tagboxmanager.contain(event.pageX, event.pageY) == false 
         ismousedown = true
-        startX = event.pageX
-        startY = event.pageY
+        startX = event.pageX - 150
+        startY = event.pageY - 150
 
     ).mouseup((event)->
       ismousedown = false
 
       if tagboxmanager.isDrawingMode() == true
         requestNewTagboxForm(startX, startY, endX, endY)
+        $('body').scrollTo($("div#tagbox_form"),800)
     ).mousemove((event)->
+
+
+
       if ismousedown
-        endX = event.pageX
-        endY = event.pageY
-        if tagboxmanager.isLayered(startX, startY, endX, endY) == false and tagboxmanager.contain(endX, endY) == false and tagboxmanager.isInsideOfPicture(endX, endY)
+        endX = event.pageX - 150
+        endY = event.pageY - 150
+        if tagboxmanager.isLayered(startX, startY, endX, endY) == false and tagboxmanager.contain(endX, endY) == false
 
 
           tagboxmanager.setSelectBox(startX,
@@ -101,7 +122,7 @@ requestNewTagboxForm = (sx, sy, ex ,ey)->
     ).mouseout((event)->
 
       if tagboxmanager.isDrawingMode && ismousedown
-        requestNewTagboxForm(startX , startY, endX, endY)
+        requestNewTagboxForm(startX, startY, endX, endY)
 
       ismousedown = false
     )

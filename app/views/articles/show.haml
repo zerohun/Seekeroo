@@ -1,5 +1,8 @@
 %p#notice= notice
+#article_infomation
+  ="author : #{@article.user.name}"
 
+#tagbox_guide{:class => 'guide'}
 #image_view
   %canvas{:id => "image_viewer",
           :width => 800,
@@ -17,10 +20,7 @@
         -tagbox.subtitles.each_with_index do |subtitle, index|
           %subtitle{:id => "#{index}", :"data-text" => "#{subtitle.text}"}
 
-%a{:"data-start_tagging" => "true"}
-  Start Tagging
-%a{:"data-done_tagging" => "true"}
-  Done Tagging
+
 .subtitle
   #subtitle_view
     %p
@@ -28,16 +28,25 @@
     %p
       (0/0)
 
-#map_canvas{:style => "width:200px;height:200px",
+#tagbox_form
+
+%a{:class => "button", :"data-start_tagging" => "true"}
+  Start Tagging(beta)
+%a{:class => "button", :"data-done_tagging" => "true"}
+  Done Tagging
+#map_guide
+  Select location of the image
+#map_canvas{:style => "width:400px;height:400px",
             :"data-latitude" => @article.latitude,
             :"data-longitude" => @article.longitude}
 
-#tagbox_form
+
 
 
 #subtitle_field_for_tagbox
 
-= link_to 'Edit', edit_article_path(@article)
-= link_to 'Delete', @article, :method => :delete,
-    :confirm => "Are you sure you want to delete this article?"
-= link_to 'Back', articles_path
+= link_to 'Edit', edit_article_path(@article), {:class => 'round_button'}
+= link_to 'Delete', @article, :method  => :delete,
+  :confirm => "Are you sure you want to delete this article?", :class => 'round_button'
+= link_to 'Back', articles_path, {:class => 'round_button'}
+

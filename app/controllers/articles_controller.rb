@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.all
+    @articles = Article.order("id desc").page(params[:page]).per_page(20)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,13 +24,17 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.xml
   def new
-    @article = Article.new
-    @article.tagboxes.build
-    @article.tagboxes.first.subtitles.build
+    if current_user
+      @article = current_user.articles.build
+      @article.tagboxes.build
+      @article.tagboxes.first.subtitles.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @article }
+      respond_to do |format|
+        format.html # new.html.erb
+        format.xml  { render :xml => @article }
+      end
+    else
+      redirect_to "/auth/twitter"
     end
   end
 
@@ -42,7 +46,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.xml
   def create
-    @article = Article.new(params[:article])
+    @article = current_user.articles.build(params[:article])
     respond_to do |format|
       if @article.save
 

@@ -3,3 +3,76 @@
  *= require_self
  *= require_tree
 */
+
+
+body{
+  line-height: 13px;
+}
+div#header{
+  height: 80px;
+  padding: 10px;
+  margin:auto;
+  background-image: linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,255,219) 71%);
+  background-image: -o-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,255,219) 71%);
+  background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,255,219) 71%);
+  background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,255,219) 71%);
+  background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 0%, rgb(245,255,219) 71%);
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, rgb(255,255,255)),
+    color-stop(0.71, rgb(245,255,219))
+  );
+  -webkit-border-radius: 10px; /* Safari prototype */
+  -moz-border-radius: 10px; /* Gecko browsers */
+  border-radius: 10px; /* Everything else - limited support at the moment */
+  
+  border-style: solid;
+  border-width: 1px;
+  border-color: #663300;
+}
+div#content{
+  width:800px;
+  margin:auto;
+}
+div#title{
+  margin-top: 20px;
+  margin-left: 150px;
+  font-size: 50px;
+  color: #FF9933;
+}
+div#login_status{
+  margin-left: 500px;
+  background-color: white;
+  width: 170px;
+  height: 25px;
+  padding: 10px;
+
+  -webkit-border-radius: 20px; /* Safari prototype */
+  -moz-border-radius: 20px; /* Gecko browsers */
+  border-radius: 20px; /* Everything else - limited support at the moment */
+
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: #EEE;
+
+}
+div#logo{
+  float: left;
+  width: 100px;
+  height: 200px;
+}
+div#explain{
+  margin-left: 100px;
+  margin-top: 25px;
+  float: left;
+}
+a#title{
+  text-decoration:none;
+}
+a:hover.button{
+  background-color: grey;
+  color: white;
+}

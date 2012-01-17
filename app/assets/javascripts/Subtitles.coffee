@@ -4,6 +4,7 @@ class @Subtitles
     @current = -1
     @size = 0
 
+
   addText: (textdata)->
     @textlist.push(textdata)
     @size = @size + 1
@@ -29,8 +30,15 @@ class @Subtitles
       @getText()
 
   pagecount: ->
+    if @current == 0
+      @subtitle_view.slideDown()
+      @page_view.slideDown()
     if @current == -1
-      text = ""
+
+      @subtitle_view.slideUp()
+      @page_view.slideUp()
+
+      #text = ""
     else
       text = "(#{@current+1}/#{@size})"
     text
@@ -41,6 +49,8 @@ class @Subtitles
     copied
 
   print: (page, subtitle_view, page_view)->
+    @subtitle_view = subtitle_view
+    @page_view = page_view
     if(page == "current")
       subtitle_view.text(@getText())
       page_view.text(@pagecount())

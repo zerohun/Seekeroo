@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526124612) do
+ActiveRecord::Schema.define(:version => 20120112134159) do
 
   create_table "articles", :force => true do |t|
     t.datetime "created_at"
@@ -18,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110526124612) do
     t.integer  "image_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "user_id"
   end
 
   create_table "images", :force => true do |t|
@@ -43,6 +45,17 @@ ActiveRecord::Schema.define(:version => 20110526124612) do
     t.integer  "width"
     t.integer  "height"
     t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ancestry"
+  end
+
+  add_index "tagboxes", ["ancestry"], :name => "index_tagboxes_on_ancestry"
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

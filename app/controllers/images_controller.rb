@@ -54,9 +54,20 @@ class ImagesController < ApplicationController
     matchedtext = text[/size_for_\w+/];
     if matchedtext != nil
       size = matchedtext.sub(/size_for_/, "");
-       @image = Image.find(params[:id])
-      send_file @image.image.path(:"#{size}"), :filename => @image.image_file_name,
-        :content_type => @image.image_content_type
+      @image = Image.find(params[:id])
+      AWS::S3::Base.establish_connection!(
+        :access_key_id     => 'AKIAJQ2VVHU4T7SLKKSQ',
+        :secret_access_key => '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'
+       )
+      open(@image.image_file_name, 'wb') do |file|
+        AWS::S3::S3Object.stream(@image.image.path(:"#{size}"), 'zerohun_forupload') do |chunk|
+          file.write chunk
+        end
+      end
+#      S3Object.value @image.image.path(:"#{size}") + '/' +  @image.image_file_name, 'zerohunforupload'
+      send_file  @image.image_file_name, :filename => @image.image_file_name,
+#        :content_type => @image.image_content_type
+      
     end
     
   end

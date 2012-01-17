@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  belongs_to :user
 
   validate do |article|
     if article.image_id.blank?
