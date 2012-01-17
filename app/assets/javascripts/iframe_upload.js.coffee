@@ -6,10 +6,11 @@
     $(iframe).unbind('load').load(->
       $(iframe).contents().find("#image_image").unbind('change').change(->
         $(iframe).contents().find("input[type='submit']").trigger('click')
+        $("#image_loading").html("<img src='/loading.gif'>")
       )
       $(selectFileButton).unbind('click').click((event)->
         $(iframe).contents().find("#image_image").trigger('click')
-        $("#image_loading").html("<img src='/loading.gif'>")
+
       )
     )
 
