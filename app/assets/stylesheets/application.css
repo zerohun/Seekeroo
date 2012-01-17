@@ -35,6 +35,7 @@ div#header{
 div#content{
   width:800px;
   margin:auto;
+  margin-bottom: 50px;
 }
 div#title{
   margin-top: 20px;
@@ -75,4 +76,23 @@ a#title{
 a:hover.button{
   background-color: grey;
   color: white;
+}
+div#footer{
+  background-color: #AAA;
+  color: black;
+  padding: 10px;
+  text-align: center;
+  background-image: linear-gradient(bottom, rgb(245,239,213) 14%, rgb(255,255,255) 57%);
+  background-image: -o-linear-gradient(bottom, rgb(245,239,213) 14%, rgb(255,255,255) 57%);
+  background-image: -moz-linear-gradient(bottom, rgb(245,239,213) 14%, rgb(255,255,255) 57%);
+  background-image: -webkit-linear-gradient(bottom, rgb(245,239,213) 14%, rgb(255,255,255) 57%);
+  background-image: -ms-linear-gradient(bottom, rgb(245,239,213) 14%, rgb(255,255,255) 57%);
+
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0.14, rgb(245,239,213)),
+    color-stop(0.57, rgb(255,255,255))
+  );
 }
